@@ -1,12 +1,11 @@
 import type { ReactNode } from 'react';
-
 import Link from 'next/link';
 
-interface DemoLayoutProps {
+type DemoLayoutProps = {
   title: string;
   description: string;
   children: ReactNode;
-}
+};
 
 export function DemoLayout({ title, description, children }: DemoLayoutProps) {
   return (

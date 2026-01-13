@@ -1,9 +1,9 @@
 'use client';
 
-import { isServer } from '@react-simplikit/mobile';
 import { useEffect, useState } from 'react';
+import { isServer } from '@react-simplikit/mobile';
 
-import { DemoLayout } from '../../../components/DemoLayout';
+import { DemoLayout } from '../../../components/DemoLayout.tsx';
 
 export default function IsServerDemo() {
   const [mounted, setMounted] = useState(false);
@@ -23,12 +23,10 @@ export default function IsServerDemo() {
         }}
       >
         <p>
-          <strong>isServer():</strong>{' '}
-          <code>{currentValue ? 'true' : 'false'}</code>
+          <strong>isServer():</strong> <code>{currentValue ? 'true' : 'false'}</code>
         </p>
         <p>
-          <strong>Hydration complete:</strong>{' '}
-          <code>{mounted ? 'true' : 'false'}</code>
+          <strong>Hydration complete:</strong> <code>{mounted ? 'true' : 'false'}</code>
         </p>
       </div>
 
