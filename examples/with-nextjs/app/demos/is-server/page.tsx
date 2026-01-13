@@ -4,9 +4,6 @@ import { isServer } from '@react-simplikit/mobile';
 import { useEffect, useState } from 'react';
 
 import { DemoLayout } from '../../../components/DemoLayout';
-import { DEMOS } from '../../../constants/demos';
-
-const demo = DEMOS.find((d) => d.name === 'isServer')!;
 
 export default function IsServerDemo() {
   const [mounted, setMounted] = useState(false);
@@ -17,7 +14,7 @@ export default function IsServerDemo() {
   }, []);
 
   return (
-    <DemoLayout title={demo.name} description={demo.description}>
+    <DemoLayout title="isServer" description="Check if code is running on the server">
       <div
         style={{
           padding: 16,
