@@ -84,11 +84,13 @@ type VisualViewportState = {
 export function useVisualViewport(): { viewport: VisualViewportState | null } {
   const visualViewport = isServer() ? null : window.visualViewport;
 
-  const [viewport, setViewport] = useState<VisualViewportState | null>(() => getVisualViewportState(visualViewport));
+  const [viewport, setViewport] = useState<VisualViewportState | null>(() =>
+    visualViewport != null ? getVisualViewportState(visualViewport) : null
+  );
 
   const updateViewportState = useCallback(() => {
     startTransition(() => {
-      setViewport(getVisualViewportState(window.visualViewport ?? null));
+      setViewport(window.visualViewport != null ? getVisualViewportState(window.visualViewport) : null);
     });
   }, []);
 
@@ -108,11 +110,7 @@ export function useVisualViewport(): { viewport: VisualViewportState | null } {
   return { viewport };
 }
 
-function getVisualViewportState(visualViewport: VisualViewport | null): VisualViewportState | null {
-  if (visualViewport == null) {
-    return null;
-  }
-
+function getVisualViewportState(visualViewport: VisualViewport): VisualViewportState {
   return {
     width: visualViewport.width,
     height: visualViewport.height,
