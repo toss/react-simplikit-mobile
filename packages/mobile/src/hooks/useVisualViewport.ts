@@ -31,9 +31,11 @@ type VisualViewportState = {
    *
    * @example
    * ```tsx
-   * const { scale } = useVisualViewport();
-   * // Hide floating UI when user zooms in
-   * if (scale > 1.3) setShowFloatingButton(false);
+   * const { viewport } = useVisualViewport();
+   * if (viewport && viewport.scale > 1.3) {
+   *   // Hide floating UI when user zooms in
+   *   setShowFloatingButton(false);
+   * }
    * ```
    */
   scale: number;
@@ -45,17 +47,27 @@ type VisualViewportState = {
  * Returns the actual visible area in mobile WebView, which changes when
  * the keyboard appears or the user zooms/scrolls.
  *
+ * **Important:** `viewport` is `null` on SSR or in browsers that don't support Visual Viewport API.
+ * Always check for null before accessing viewport properties.
+ *
  * **Tip:** If you only need keyboard height, use `useKeyboardHeight()` instead
  * for a simpler API.
  *
- * @returns Visual Viewport state (width, height, offsetLeft, offsetTop, scale)
+ * @returns Object containing Visual Viewport state or `null` if not supported
  *
  * @see {@link useKeyboardHeight} - Simpler hook for keyboard height only
  *
  * @example
  * ```tsx
  * function CustomLayout() {
- *   const { width, height, offsetTop, scale } = useVisualViewport();
+ *   const { viewport } = useVisualViewport();
+ *
+ *   // Always check for null first
+ *   if (!viewport) {
+ *     return <div>Visual Viewport not supported</div>;
+ *   }
+ *
+ *   const { width, height, offsetTop, scale } = viewport;
  *
  *   // Hide floating UI when user zooms in
  *   const showFloatingUI = scale <= 1.3;
@@ -69,10 +81,10 @@ type VisualViewportState = {
  * }
  * ```
  */
-export function useVisualViewport(): VisualViewportState {
+export function useVisualViewport(): { viewport: VisualViewportState | null } {
   const visualViewport = isServer() ? null : window.visualViewport;
 
-  const [viewport, setViewport] = useState<VisualViewportState>(() => getVisualViewportState(visualViewport));
+  const [viewport, setViewport] = useState<VisualViewportState | null>(() => getVisualViewportState(visualViewport));
 
   const updateViewportState = useCallback(() => {
     startTransition(() => {
@@ -93,15 +105,19 @@ export function useVisualViewport(): VisualViewportState {
     [updateViewportState]
   );
 
-  return viewport;
+  return { viewport };
 }
 
-function getVisualViewportState(visualViewport: VisualViewport | null): VisualViewportState {
+function getVisualViewportState(visualViewport: VisualViewport | null): VisualViewportState | null {
+  if (visualViewport == null) {
+    return null;
+  }
+
   return {
-    width: visualViewport?.width ?? 0,
-    height: visualViewport?.height ?? 0,
-    offsetLeft: visualViewport?.offsetLeft ?? 0,
-    offsetTop: visualViewport?.offsetTop ?? 0,
-    scale: visualViewport?.scale ?? 1,
+    width: visualViewport.width,
+    height: visualViewport.height,
+    offsetLeft: visualViewport.offsetLeft,
+    offsetTop: visualViewport.offsetTop,
+    scale: visualViewport.scale,
   };
 }
