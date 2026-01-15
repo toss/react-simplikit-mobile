@@ -1680,6 +1680,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@examples/shared@workspace:examples/shared":
+  version: 0.0.0-use.local
+  resolution: "@examples/shared@workspace:examples/shared"
+  peerDependencies:
+    "@react-simplikit/mobile": "workspace:*"
+    react: ^19.0.0
+  languageName: unknown
+  linkType: soft
+
 "@humanfs/core@npm:^0.19.1":
   version: 0.19.1
   resolution: "@humanfs/core@npm:0.19.1"

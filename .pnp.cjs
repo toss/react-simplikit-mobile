@@ -15,6 +15,10 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:."\
     },\
     {\
+      "name": "@examples/shared",\
+      "reference": "workspace:examples/shared"\
+    },\
+    {\
       "name": "with-nextjs",\
       "reference": "workspace:examples/with-nextjs"\
     },\
@@ -31,6 +35,7 @@ const RAW_RUNTIME_STATE =
   "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
   "pnpZipBackend": "libzip",\
   "fallbackExclusionList": [\
+    ["@examples/shared", ["workspace:examples/shared"]],\
     ["@react-simplikit/mobile", ["virtual:f9522faed4c7e558462ef89aa232afe8b28f40173b914f756ee38b21c9ce10bf830de8334e264bc007ff37043ac2a4f134dac81249be2bcb7033ff024ce27466#workspace:packages/mobile", "workspace:packages/mobile"]],\
     ["react-simplikit", ["workspace:."]],\
     ["with-nextjs", ["workspace:examples/with-nextjs"]],\
@@ -2050,6 +2055,15 @@ const RAW_RUNTIME_STATE =
           ["levn", "npm:0.4.1"]\
         ],\
         "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@examples/shared", [\
+      ["workspace:examples/shared", {\
+        "packageLocation": "./examples/shared/",\
+        "packageDependencies": [\
+          ["@examples/shared", "workspace:examples/shared"]\
+        ],\
+        "linkType": "SOFT"\
       }]\
     ]],\
     ["@humanfs/core", [\
