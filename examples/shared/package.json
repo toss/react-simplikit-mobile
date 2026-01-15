@@ -1,0 +1,19 @@
+{
+  "name": "@examples/shared",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./components/*": "./src/components/*.tsx",
+    "./styles.css": "./src/components/styles.css"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.15"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "@react-simplikit/mobile": "workspace:*"
+  }
+}
