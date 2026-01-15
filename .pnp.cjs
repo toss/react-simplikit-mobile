@@ -15,6 +15,10 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:."\
     },\
     {\
+      "name": "@examples/shared",\
+      "reference": "workspace:examples/shared"\
+    },\
+    {\
       "name": "with-nextjs",\
       "reference": "workspace:examples/with-nextjs"\
     },\
@@ -31,6 +35,7 @@ const RAW_RUNTIME_STATE =
   "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
   "pnpZipBackend": "libzip",\
   "fallbackExclusionList": [\
+    ["@examples/shared", ["virtual:4859486b80a38e1e55778596b129478b56d21224c49a057e6f204bd0ef112f450c0ab6db41bd028bc885a6d06a104f1faffa30cd30b973c26726b0fe33e03341#workspace:examples/shared", "workspace:examples/shared"]],\
     ["@react-simplikit/mobile", ["virtual:f9522faed4c7e558462ef89aa232afe8b28f40173b914f756ee38b21c9ce10bf830de8334e264bc007ff37043ac2a4f134dac81249be2bcb7033ff024ce27466#workspace:packages/mobile", "workspace:packages/mobile"]],\
     ["react-simplikit", ["workspace:."]],\
     ["with-nextjs", ["workspace:examples/with-nextjs"]],\
@@ -2052,6 +2057,32 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@examples/shared", [\
+      ["virtual:4859486b80a38e1e55778596b129478b56d21224c49a057e6f204bd0ef112f450c0ab6db41bd028bc885a6d06a104f1faffa30cd30b973c26726b0fe33e03341#workspace:examples/shared", {\
+        "packageLocation": "./.yarn/__virtual__/@examples-shared-virtual-dbe21ba187/1/examples/shared/",\
+        "packageDependencies": [\
+          ["@examples/shared", "virtual:4859486b80a38e1e55778596b129478b56d21224c49a057e6f204bd0ef112f450c0ab6db41bd028bc885a6d06a104f1faffa30cd30b973c26726b0fe33e03341#workspace:examples/shared"],\
+          ["@react-simplikit/mobile", "virtual:f9522faed4c7e558462ef89aa232afe8b28f40173b914f756ee38b21c9ce10bf830de8334e264bc007ff37043ac2a4f134dac81249be2bcb7033ff024ce27466#workspace:packages/mobile"],\
+          ["@types/react", "npm:19.1.0"],\
+          ["@types/react-simplikit__mobile", null],\
+          ["react", "npm:19.1.0"]\
+        ],\
+        "packagePeers": [\
+          "@react-simplikit/mobile",\
+          "@types/react-simplikit__mobile",\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["workspace:examples/shared", {\
+        "packageLocation": "./examples/shared/",\
+        "packageDependencies": [\
+          ["@examples/shared", "workspace:examples/shared"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
     ["@humanfs/core", [\
       ["npm:0.19.1", {\
         "packageLocation": "./.yarn/cache/@humanfs-core-npm-0.19.1-e2e7aaeb6e-aa4e015217.zip/node_modules/@humanfs/core/",\
@@ -3730,6 +3761,28 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@shikijs-vscode-textmate-npm-10.0.2-c80a8c15da-36b682d691.zip/node_modules/@shikijs/vscode-textmate/",\
         "packageDependencies": [\
           ["@shikijs/vscode-textmate", "npm:10.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@suspensive/react", [\
+      ["npm:3.18.0", {\
+        "packageLocation": "./.yarn/cache/@suspensive-react-npm-3.18.0-a499d947ab-c7d68aa699.zip/node_modules/@suspensive/react/",\
+        "packageDependencies": [\
+          ["@suspensive/react", "npm:3.18.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:4859486b80a38e1e55778596b129478b56d21224c49a057e6f204bd0ef112f450c0ab6db41bd028bc885a6d06a104f1faffa30cd30b973c26726b0fe33e03341#npm:3.18.0", {\
+        "packageLocation": "./.yarn/__virtual__/@suspensive-react-virtual-5415942d38/0/cache/@suspensive-react-npm-3.18.0-a499d947ab-c7d68aa699.zip/node_modules/@suspensive/react/",\
+        "packageDependencies": [\
+          ["@suspensive/react", "virtual:4859486b80a38e1e55778596b129478b56d21224c49a057e6f204bd0ef112f450c0ab6db41bd028bc885a6d06a104f1faffa30cd30b973c26726b0fe33e03341#npm:3.18.0"],\
+          ["@types/react", "npm:19.1.0"],\
+          ["react", "npm:19.1.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -12441,10 +12494,12 @@ const RAW_RUNTIME_STATE =
       ["workspace:examples/with-vite", {\
         "packageLocation": "./examples/with-vite/",\
         "packageDependencies": [\
+          ["@examples/shared", "virtual:4859486b80a38e1e55778596b129478b56d21224c49a057e6f204bd0ef112f450c0ab6db41bd028bc885a6d06a104f1faffa30cd30b973c26726b0fe33e03341#workspace:examples/shared"],\
           ["@radix-ui/react-accordion", "virtual:f9522faed4c7e558462ef89aa232afe8b28f40173b914f756ee38b21c9ce10bf830de8334e264bc007ff37043ac2a4f134dac81249be2bcb7033ff024ce27466#npm:1.2.12"],\
           ["@radix-ui/react-collapsible", "virtual:f9522faed4c7e558462ef89aa232afe8b28f40173b914f756ee38b21c9ce10bf830de8334e264bc007ff37043ac2a4f134dac81249be2bcb7033ff024ce27466#npm:1.1.12"],\
           ["@radix-ui/react-dialog", "virtual:f9522faed4c7e558462ef89aa232afe8b28f40173b914f756ee38b21c9ce10bf830de8334e264bc007ff37043ac2a4f134dac81249be2bcb7033ff024ce27466#npm:1.1.15"],\
           ["@react-simplikit/mobile", "virtual:f9522faed4c7e558462ef89aa232afe8b28f40173b914f756ee38b21c9ce10bf830de8334e264bc007ff37043ac2a4f134dac81249be2bcb7033ff024ce27466#workspace:packages/mobile"],\
+          ["@suspensive/react", "virtual:4859486b80a38e1e55778596b129478b56d21224c49a057e6f204bd0ef112f450c0ab6db41bd028bc885a6d06a104f1faffa30cd30b973c26726b0fe33e03341#npm:3.18.0"],\
           ["@types/react", "npm:19.1.0"],\
           ["@types/react-dom", "virtual:58f1f645458156471f2dd4bfe69f887061e36f232f989d41ce7ee0c9c6542f794a4662e41944ab04718e40cc5d7284a0aa8cb5039289908ecfcadbccf753070f#npm:19.1.2"],\
           ["@vitejs/plugin-react", "virtual:4859486b80a38e1e55778596b129478b56d21224c49a057e6f204bd0ef112f450c0ab6db41bd028bc885a6d06a104f1faffa30cd30b973c26726b0fe33e03341#npm:4.7.0"],\

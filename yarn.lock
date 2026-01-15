@@ -1680,6 +1680,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@examples/shared@workspace:*, @examples/shared@workspace:examples/shared":
+  version: 0.0.0-use.local
+  resolution: "@examples/shared@workspace:examples/shared"
+  peerDependencies:
+    "@react-simplikit/mobile": "workspace:*"
+    react: ^19.0.0
+  languageName: unknown
+  linkType: soft
+
 "@humanfs/core@npm:^0.19.1":
   version: 0.19.1
   resolution: "@humanfs/core@npm:0.19.1"
@@ -3027,6 +3036,15 @@ __metadata:
   version: 10.0.2
   resolution: "@shikijs/vscode-textmate@npm:10.0.2"
   checksum: 10c0/36b682d691088ec244de292dc8f91b808f95c89466af421cf84cbab92230f03c8348649c14b3251991b10ce632b0c715e416e992dd5f28ff3221dc2693fd9462
+  languageName: node
+  linkType: hard
+
+"@suspensive/react@npm:^3.18.0":
+  version: 3.18.0
+  resolution: "@suspensive/react@npm:3.18.0"
+  peerDependencies:
+    react: ^18 || ^19
+  checksum: 10c0/c7d68aa699e33d52a854cad1b677c596a1c3fdebd1992571ead1a3eecad28ef128423052de0c4267888abedf1577a7ecee1acb39b781b4508ec34c3b9e33bc8d
   languageName: node
   linkType: hard
 
@@ -10636,10 +10654,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "with-vite@workspace:examples/with-vite"
   dependencies:
+    "@examples/shared": "workspace:*"
     "@radix-ui/react-accordion": "npm:^1.2.12"
     "@radix-ui/react-collapsible": "npm:^1.1.12"
     "@radix-ui/react-dialog": "npm:^1.1.15"
     "@react-simplikit/mobile": "workspace:*"
+    "@suspensive/react": "npm:^3.18.0"
     "@types/react": "npm:^19.0.0"
     "@types/react-dom": "npm:^19.0.0"
     "@vitejs/plugin-react": "npm:^4.3.4"
