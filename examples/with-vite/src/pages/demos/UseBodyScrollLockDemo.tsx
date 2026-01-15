@@ -1,15 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useBodyScrollLock } from '@react-simplikit/mobile';
-
-import { Button } from '../../components/ui/button';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '../../components/ui/dialog';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
+import { SimpleButton, SimpleCard, SimpleDialog } from '@examples/shared';
 import { DemoLayout } from '../../components/DemoLayout.tsx';
 
 // Body scroll lock wrapper component
@@ -39,83 +30,73 @@ export function UseBodyScrollLockDemo() {
       {/* Single lock at parent level */}
       {hasModal && <BodyScrollLock />}
 
-      <div className="space-y-6 pb-32">
+      <div style={{ paddingBottom: '128px' }}>
         {/* Status Card */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Lock State</CardTitle>
-            <CardDescription>Real-time body scroll lock status</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            <div className="flex justify-between text-sm">
-              <span className="font-medium">Modal 1:</span>
-              <span className={showModal1 ? 'text-green-600' : 'text-gray-400'}>
+        <SimpleCard title="Lock State">
+          <p style={{ fontSize: '14px', color: '#6b7280', marginBottom: '8px' }}>Real-time body scroll lock status</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
+              <span style={{ fontWeight: 500 }}>Modal 1:</span>
+              <span style={{ color: showModal1 ? '#16a34a' : '#9ca3af' }}>
                 {showModal1 ? 'Open' : 'Closed'}
               </span>
             </div>
-            <div className="flex justify-between text-sm">
-              <span className="font-medium">Modal 2:</span>
-              <span className={showModal2 ? 'text-green-600' : 'text-gray-400'}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
+              <span style={{ fontWeight: 500 }}>Modal 2:</span>
+              <span style={{ color: showModal2 ? '#16a34a' : '#9ca3af' }}>
                 {showModal2 ? 'Open' : 'Closed'}
               </span>
             </div>
-            <div className="flex justify-between text-sm">
-              <span className="font-medium">Body Locked:</span>
-              <span className={hasModal ? 'text-red-600 font-semibold' : 'text-gray-400'}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
+              <span style={{ fontWeight: 500 }}>Body Locked:</span>
+              <span style={{ color: hasModal ? '#dc2626' : '#9ca3af', fontWeight: hasModal ? 600 : 400 }}>
                 {hasModal ? '🔒 Locked' : '🔓 Unlocked'}
               </span>
             </div>
-            <div className="flex justify-between text-sm">
-              <span className="font-medium">Scroll Y:</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
+              <span style={{ fontWeight: 500 }}>Scroll Y:</span>
               <span>{Math.round(scrollPosition)}px</span>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </SimpleCard>
 
         {/* Demo Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Demo: Nested Modals</CardTitle>
-            <CardDescription>
-              Click the button below to open Modal 1. Inside Modal 1, you can open Modal 2.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <p className="text-sm text-blue-900">
-                <strong>Key Pattern:</strong> Use a single <code className="bg-blue-100 px-1 rounded">useBodyScrollLock()</code> at the parent
+        <SimpleCard title="Demo: Nested Modals">
+          <p style={{ fontSize: '14px', color: '#6b7280', marginBottom: '16px' }}>
+            Click the button below to open Modal 1. Inside Modal 1, you can open Modal 2.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div style={{ padding: '16px', backgroundColor: '#eff6ff', borderRadius: '8px', border: '1px solid #bfdbfe' }}>
+              <p style={{ fontSize: '14px', color: '#1e3a8a', margin: 0 }}>
+                <strong>Key Pattern:</strong> Use a single <code style={{ backgroundColor: '#dbeafe', padding: '2px 4px', borderRadius: '4px' }}>useBodyScrollLock()</code> at the parent
                 level when any modal is open, rather than individual locks in each modal.
               </p>
             </div>
 
-            <Button onClick={() => setShowModal1(true)} className="w-full">
+            <SimpleButton onClick={() => setShowModal1(true)} fullWidth>
               Open Modal 1
-            </Button>
+            </SimpleButton>
 
             {/* Scrollable Content */}
-            <div className="mt-6 p-4 bg-gray-50 rounded-lg max-h-96 overflow-y-auto">
-              <h3 className="font-semibold mb-2">Scroll this content</h3>
-              <p className="text-sm text-gray-600 mb-4">
+            <div style={{ marginTop: '24px', padding: '16px', backgroundColor: '#f9fafb', borderRadius: '8px', maxHeight: '384px', overflowY: 'auto' }}>
+              <h3 style={{ fontWeight: 600, marginBottom: '8px', margin: 0 }}>Scroll this content</h3>
+              <p style={{ fontSize: '14px', color: '#4b5563', marginBottom: '16px' }}>
                 Try scrolling this area. When a modal is open, the body scroll will be locked, but
                 you can still scroll inside modals.
               </p>
               {Array.from({ length: 20 }).map((_, i) => (
-                <p key={i} className="text-sm text-gray-600 mb-2">
+                <p key={i} style={{ fontSize: '14px', color: '#4b5563', marginBottom: '8px' }}>
                   Line {i + 1}: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
               ))}
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </SimpleCard>
 
         {/* Code Example */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Implementation Code</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-xs">
-              <code>{`import { useState } from 'react';
+        <SimpleCard title="Implementation Code">
+          <pre style={{ backgroundColor: '#111827', color: '#e5e7eb', padding: '16px', borderRadius: '8px', overflowX: 'auto', fontSize: '12px', margin: 0 }}>
+            <code>{`import { useState } from 'react';
 import { useBodyScrollLock } from '@react-simplikit/mobile';
 
 // ✅ Correct: Single lock wrapper
@@ -152,66 +133,55 @@ function App() {
     </>
   );
 }`}</code>
-            </pre>
-          </CardContent>
-        </Card>
+          </pre>
+        </SimpleCard>
       </div>
 
       {/* Modal 1 */}
-      <Dialog open={showModal1} onOpenChange={setShowModal1}>
-        <DialogContent className="max-w-lg">
-          <DialogHeader>
-            <DialogTitle>Modal 1</DialogTitle>
-            <DialogDescription>
-              This is Modal 1. The body scroll is now locked, but you can scroll inside this modal.
-            </DialogDescription>
-          </DialogHeader>
+      <SimpleDialog open={showModal1} onOpenChange={setShowModal1} title="Modal 1">
+        <p style={{ fontSize: '14px', color: '#6b7280', marginBottom: '16px' }}>
+          This is Modal 1. The body scroll is now locked, but you can scroll inside this modal.
+        </p>
 
-          <div className="space-y-4">
-            <p className="text-sm">
-              Try scrolling inside this modal - it works fine. But the background page is locked.
-            </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <p style={{ fontSize: '14px' }}>
+            Try scrolling inside this modal - it works fine. But the background page is locked.
+          </p>
 
-            <Button onClick={() => setShowModal2(true)} className="w-full">
-              Open Modal 2 (Nested)
-            </Button>
+          <SimpleButton onClick={() => setShowModal2(true)} fullWidth>
+            Open Modal 2 (Nested)
+          </SimpleButton>
 
-            <div className="max-h-48 overflow-y-auto bg-gray-50 p-4 rounded">
-              {Array.from({ length: 10 }).map((_, i) => (
-                <p key={i} className="text-sm mb-2">
-                  Modal 1 scrollable content line {i + 1}
-                </p>
-              ))}
-            </div>
+          <div style={{ maxHeight: '192px', overflowY: 'auto', backgroundColor: '#f9fafb', padding: '16px', borderRadius: '4px' }}>
+            {Array.from({ length: 10 }).map((_, i) => (
+              <p key={i} style={{ fontSize: '14px', marginBottom: '8px' }}>
+                Modal 1 scrollable content line {i + 1}
+              </p>
+            ))}
           </div>
-        </DialogContent>
-      </Dialog>
+        </div>
+      </SimpleDialog>
 
       {/* Modal 2 (Nested) */}
-      <Dialog open={showModal2} onOpenChange={setShowModal2}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Modal 2 (Nested)</DialogTitle>
-            <DialogDescription>
-              This is Modal 2, opened from Modal 1.
-            </DialogDescription>
-          </DialogHeader>
+      <SimpleDialog open={showModal2} onOpenChange={setShowModal2} title="Modal 2 (Nested)">
+        <p style={{ fontSize: '14px', color: '#6b7280', marginBottom: '16px' }}>
+          This is Modal 2, opened from Modal 1.
+        </p>
 
-          <div className="space-y-4">
-            <p className="text-sm">
-              Even with nested modals, the body scroll lock works correctly because we use a single
-              lock at the parent level.
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <p style={{ fontSize: '14px' }}>
+            Even with nested modals, the body scroll lock works correctly because we use a single
+            lock at the parent level.
+          </p>
+
+          <div style={{ padding: '16px', backgroundColor: '#fef3c7', border: '1px solid '#fde68a', borderRadius: '8px' }}>
+            <p style={{ fontSize: '14px', color: '#78350f', margin: 0 }}>
+              <strong>💡 Tip:</strong> Close this modal first, then Modal 1. The body scroll will
+              unlock only when both modals are closed.
             </p>
-
-            <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg">
-              <p className="text-sm text-amber-900">
-                <strong>💡 Tip:</strong> Close this modal first, then Modal 1. The body scroll will
-                unlock only when both modals are closed.
-              </p>
-            </div>
           </div>
-        </DialogContent>
-      </Dialog>
+        </div>
+      </SimpleDialog>
     </DemoLayout>
   );
 }

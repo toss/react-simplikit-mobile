@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { disableBodyScrollLock, enableBodyScrollLock } from '@react-simplikit/mobile';
-import { Button } from '../../components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
+import { SimpleButton, SimpleCard } from '@examples/shared';
 import { DemoLayout } from '../../components/DemoLayout.tsx';
 
 export function BodyScrollLockUtilDemo() {
@@ -39,110 +38,96 @@ export function BodyScrollLockUtilDemo() {
       title="bodyScrollLock Utils"
       description="Programmatically control body scroll lock"
     >
-      <div className="space-y-6 pb-32">
+      <div style={{ paddingBottom: '128px' }}>
         {/* Status */}
-        <Card>
-          <CardContent className="p-8 text-center">
-            <div className="text-6xl mb-4">{locked ? '🔒' : '🔓'}</div>
-            <h2 className={`text-3xl font-bold ${locked ? 'text-red-600' : 'text-green-600'}`}>
+        <SimpleCard>
+          <div style={{ padding: '32px', textAlign: 'center' }}>
+            <div style={{ fontSize: '60px', marginBottom: '16px' }}>{locked ? '🔒' : '🔓'}</div>
+            <h2 style={{ fontSize: '30px', fontWeight: 700, color: locked ? '#dc2626' : '#16a34a', margin: 0 }}>
               {locked ? 'LOCKED' : 'UNLOCKED'}
             </h2>
-            <p className="text-sm text-gray-600 mt-2">
+            <p style={{ fontSize: '14px', color: '#4b5563', marginTop: '8px' }}>
               {locked ? 'Body scroll is locked. Try scrolling!' : 'Body scroll is unlocked.'}
             </p>
-            <p className="text-sm text-gray-500 mt-1 font-mono">Scroll Y: {Math.round(scrollY)}px</p>
-          </CardContent>
-        </Card>
+            <p style={{ fontSize: '14px', color: '#6b7280', marginTop: '4px', fontFamily: 'monospace' }}>Scroll Y: {Math.round(scrollY)}px</p>
+          </div>
+        </SimpleCard>
 
         {/* Controls */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Controls</CardTitle>
-            <CardDescription>Test the scroll lock utilities</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Button onClick={handleToggle} className="w-full" size="lg">
+        <SimpleCard title="Controls">
+          <p style={{ fontSize: '14px', color: '#6b7280', marginBottom: '16px' }}>Test the scroll lock utilities</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <SimpleButton onClick={handleToggle} fullWidth>
               {locked ? '🔓 Unlock Scroll' : '🔒 Lock Scroll'}
-            </Button>
+            </SimpleButton>
 
-            <div className="grid grid-cols-2 gap-2">
-              <Button onClick={handleForceLock} variant="outline">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+              <SimpleButton onClick={handleForceLock} variant="secondary">
                 Force Lock
-              </Button>
-              <Button onClick={handleForceUnlock} variant="outline">
+              </SimpleButton>
+              <SimpleButton onClick={handleForceUnlock} variant="secondary">
                 Force Unlock
-              </Button>
+              </SimpleButton>
             </div>
 
-            <div className="p-4 bg-blue-50 rounded-lg">
-              <h4 className="font-semibold mb-2">How to test:</h4>
-              <ol className="list-decimal list-inside text-sm space-y-1">
+            <div style={{ padding: '16px', backgroundColor: '#eff6ff', borderRadius: '8px' }}>
+              <h4 style={{ fontWeight: 600, marginBottom: '8px', margin: 0 }}>How to test:</h4>
+              <ol style={{ paddingLeft: '20px', fontSize: '14px', display: 'flex', flexDirection: 'column', gap: '4px', margin: 0 }}>
                 <li>Click "Lock Scroll" and try to scroll - it won't work</li>
                 <li>Click "Unlock Scroll" to restore scrolling</li>
                 <li>Try Force Lock/Unlock for direct control</li>
               </ol>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </SimpleCard>
 
         {/* Comparison */}
-        <div className="grid gap-4">
-          <Card>
-            <CardHeader>
-              <CardTitle>🪝 useBodyScrollLock Hook</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm">
-              <p className="font-semibold mb-2">Use when:</p>
-              <ul className="list-disc list-inside space-y-1 text-gray-700">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <SimpleCard title="🪝 useBodyScrollLock Hook">
+            <div style={{ fontSize: '14px' }}>
+              <p style={{ fontWeight: 600, marginBottom: '8px' }}>Use when:</p>
+              <ul style={{ paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '4px', color: '#374151' }}>
                 <li>Lock tied to component lifecycle</li>
                 <li>Managing modals, drawers</li>
                 <li>Automatic cleanup on unmount</li>
               </ul>
-              <pre className="mt-3 p-3 bg-gray-900 text-gray-100 rounded text-xs overflow-x-auto">
+              <pre style={{ marginTop: '12px', padding: '12px', backgroundColor: '#111827', color: '#e5e7eb', borderRadius: '4px', fontSize: '12px', overflowX: 'auto' }}>
                 <code>{`function Modal() {
   useBodyScrollLock();
   return <div>Modal</div>;
 }`}</code>
               </pre>
-            </CardContent>
-          </Card>
+            </div>
+          </SimpleCard>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>🔧 Utils (Current Demo)</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm">
-              <p className="font-semibold mb-2">Use when:</p>
-              <ul className="list-disc list-inside space-y-1 text-gray-700">
+          <SimpleCard title="🔧 Utils (Current Demo)">
+            <div style={{ fontSize: '14px' }}>
+              <p style={{ fontWeight: 600, marginBottom: '8px' }}>Use when:</p>
+              <ul style={{ paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '4px', color: '#374151' }}>
                 <li>Need programmatic control</li>
                 <li>Complex lock/unlock logic</li>
                 <li>Outside React components</li>
               </ul>
-              <pre className="mt-3 p-3 bg-gray-900 text-gray-100 rounded text-xs overflow-x-auto">
+              <pre style={{ marginTop: '12px', padding: '12px', backgroundColor: '#111827', color: '#e5e7eb', borderRadius: '4px', fontSize: '12px', overflowX: 'auto' }}>
                 <code>{`const handleClick = () => {
   enableBodyScrollLock();
 };`}</code>
               </pre>
-            </CardContent>
-          </Card>
+            </div>
+          </SimpleCard>
         </div>
 
         {/* Scrollable Content */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Scrollable Content</CardTitle>
-            <CardDescription>Test area - try scrolling when locked</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="max-h-96 overflow-y-auto bg-gray-50 p-4 rounded-lg">
-              {Array.from({ length: 30 }).map((_, i) => (
-                <p key={i} className="text-sm mb-2">
-                  Line {i + 1}: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+        <SimpleCard title="Scrollable Content">
+          <p style={{ fontSize: '14px', color: '#6b7280', marginBottom: '16px' }}>Test area - try scrolling when locked</p>
+          <div style={{ maxHeight: '384px', overflowY: 'auto', backgroundColor: '#f9fafb', padding: '16px', borderRadius: '8px' }}>
+            {Array.from({ length: 30 }).map((_, i) => (
+              <p key={i} style={{ fontSize: '14px', marginBottom: '8px' }}>
+                Line {i + 1}: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+            ))}
+          </div>
+        </SimpleCard>
       </div>
     </DemoLayout>
   );
