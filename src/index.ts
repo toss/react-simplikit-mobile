@@ -18,6 +18,7 @@ export { useInterval } from './hooks/useInterval/index.ts';
 export { useIsomorphicLayoutEffect } from './hooks/useIsomorphicLayoutEffect/index.ts';
 export { useLoading } from './hooks/useLoading/index.ts';
 export { useLongPress } from './hooks/useLongPress/index.ts';
+export { useLowPowerMode } from './hooks/useLowPowerMode/index.ts';
 export { useMap } from './hooks/useMap/index.ts';
 export { useOutsideClickEffect } from './hooks/useOutsideClickEffect/index.ts';
 export { usePreservedCallback } from './hooks/usePreservedCallback/index.ts';
