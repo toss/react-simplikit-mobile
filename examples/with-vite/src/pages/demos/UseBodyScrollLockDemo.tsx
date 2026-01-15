@@ -174,7 +174,7 @@ function App() {
             lock at the parent level.
           </p>
 
-          <div style={{ padding: '16px', backgroundColor: '#fef3c7', border: '1px solid '#fde68a', borderRadius: '8px' }}>
+          <div style={{ padding: '16px', backgroundColor: '#fef3c7', border: '1px solid #fde68a', borderRadius: '8px' }}>
             <p style={{ fontSize: '14px', color: '#78350f', margin: 0 }}>
               <strong>💡 Tip:</strong> Close this modal first, then Modal 1. The body scroll will
               unlock only when both modals are closed.

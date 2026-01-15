@@ -10,7 +10,7 @@ type ProvidersProps = {
 
 export function Providers({ children }: ProvidersProps) {
   return (
-    <ErrorBoundary fallback={ErrorFallback}>
+    <ErrorBoundary fallback={({ error, reset }) => <ErrorFallback error={error} resetErrorBoundary={reset} />}>
       {children}
     </ErrorBoundary>
   );
