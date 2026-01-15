@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { isServer } from '@react-simplikit/mobile';
 
-import { DemoLayout } from '../../../components/DemoLayout.tsx';
+import { DemoLayout } from '@/components/DemoLayout';
 
 export default function IsServerDemo() {
   const [mounted, setMounted] = useState(false);
