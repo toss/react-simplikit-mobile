@@ -85,8 +85,7 @@ export function Home() {
         }}
       >
         <p style={{ margin: 0, fontSize: 14, color: '#666' }}>
-          💡 <strong>Tip:</strong> For the best experience, scan the QR code on each demo page with
-          your mobile device
+          💡 <strong>Tip:</strong> For the best experience, test these demos on your mobile device
         </p>
       </footer>
     </div>
