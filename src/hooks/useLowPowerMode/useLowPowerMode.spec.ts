@@ -324,6 +324,7 @@ describe('useLowPowerMode', () => {
       expect(mockBattery.removeEventListener).toHaveBeenCalledWith('chargingchange', expect.any(Function));
       expect(mockBattery.removeEventListener).toHaveBeenCalledWith('levelchange', expect.any(Function));
       expect(mockMediaQuery.removeEventListener).toHaveBeenCalledWith('change', expect.any(Function));
+      expect(mockConnection.removeEventListener).toHaveBeenCalledWith('change', expect.any(Function));
     });
 
     it('should handle boundary case: exactly 20% battery', async () => {

@@ -3,6 +3,11 @@ import { useEffect, useState } from 'react';
 import { isServer } from '../../utils/isServer/isServer.ts';
 
 /**
+ * Low battery threshold (20%)
+ */
+const LOW_BATTERY_THRESHOLD = 0.2;
+
+/**
  * Battery manager interface
  */
 type BatteryManager = {
@@ -29,6 +34,13 @@ type NetworkInformation = {
   addEventListener(type: 'change', listener: () => void): void;
   removeEventListener(type: 'change', listener: () => void): void;
 } & EventTarget;
+
+/**
+ * Navigator with connection property
+ */
+type NavigatorWithConnection = {
+  connection?: NetworkInformation;
+} & Navigator;
 
 /**
  * Individual indicators for low power mode detection
@@ -68,14 +80,25 @@ function getPrefersReducedMotion(): boolean {
 }
 
 /**
+ * Get navigator connection safely
+ */
+function getNavigatorConnection(): NetworkInformation | null {
+  if (isServer() || !('connection' in navigator)) {
+    return null;
+  }
+
+  try {
+    return (navigator as NavigatorWithConnection).connection ?? null;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Check if data saver is enabled
  */
 function getSaveDataEnabled(): boolean {
-  if (isServer() || !('connection' in navigator)) {
-    return false;
-  }
-
-  const connection = (navigator as unknown as { connection: NetworkInformation }).connection;
+  const connection = getNavigatorConnection();
 
   if (connection == null) {
     return false;
@@ -115,7 +138,7 @@ async function getLowPowerMode(): Promise<LowPowerMode> {
       };
     }
 
-    const lowBattery = battery.level <= 0.2 && !battery.charging;
+    const lowBattery = battery.level <= LOW_BATTERY_THRESHOLD && !battery.charging;
 
     return {
       isLowPowerMode: lowBattery || reducedMotion || saveData,
@@ -149,6 +172,10 @@ async function getLowPowerMode(): Promise<LowPowerMode> {
  *
  * Note: There is no direct API to detect OS-level low power mode. This hook
  * provides heuristic indicators that suggest power-conscious behavior.
+ *
+ * **Important**: The Battery API is deprecated in some browsers and may be removed.
+ * This hook provides graceful degradation when the API is unavailable, falling back
+ * to other indicators (Data Saver, Reduced Motion).
  *
  * @returns {LowPowerMode} Low power mode detection result
  * - `isLowPowerMode` - True if any indicator suggests low power mode
@@ -230,8 +257,9 @@ export function useLowPowerMode(): LowPowerMode {
       // Battery listeners
       if ('getBattery' in navigator) {
         try {
-          battery = (await (navigator as NavigatorWithBattery).getBattery?.()) ?? null;
-          if (battery != null && isMounted) {
+          const batteryManager = (await (navigator as NavigatorWithBattery).getBattery?.()) ?? null;
+          if (batteryManager != null && isMounted) {
+            battery = batteryManager; // Assign only if still mounted
             battery.addEventListener('chargingchange', updateLowPowerMode);
             battery.addEventListener('levelchange', updateLowPowerMode);
           }
@@ -247,9 +275,10 @@ export function useLowPowerMode(): LowPowerMode {
       }
 
       // Connection listener (Data Saver)
-      if ('connection' in navigator && isMounted) {
-        connection = (navigator as unknown as { connection: NetworkInformation }).connection;
-        if (connection != null) {
+      if (isMounted) {
+        const conn = getNavigatorConnection();
+        if (conn != null) {
+          connection = conn;
           connection.addEventListener('change', updateLowPowerMode);
         }
       }
