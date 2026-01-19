@@ -1,15 +1,17 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 
-type DemoLayoutProps = {
+export function DemoLayout({
+  title,
+  description,
+  children,
+}: {
   title: string;
   description: string;
   children: ReactNode;
-};
-
-export function DemoLayout({ title, description, children }: DemoLayoutProps) {
+}) {
   return (
-    <div style={{ padding: 20, fontFamily: 'system-ui, sans-serif' }}>
+    <div style={{ maxWidth: 480, margin: '0 auto', minHeight: '100vh', padding: 20, fontFamily: 'system-ui, sans-serif' }}>
       <nav>
         <Link href="/">← All Demos</Link>
       </nav>

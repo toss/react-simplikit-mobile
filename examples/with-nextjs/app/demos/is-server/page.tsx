@@ -1,39 +1,68 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Card, CodeBlock, InfoBox, StatusCard, StatusRow } from '@examples/shared';
 import { isServer } from '@react-simplikit/mobile';
 
-import { DemoLayout } from '../../../components/DemoLayout.tsx';
+import { DemoLayout } from '@/components/DemoLayout.tsx';
+
+const EXAMPLE_CODE = `import { isServer } from '@react-simplikit/mobile';
+
+// Check environment
+if (isServer()) {
+  // Server-side only code
+  console.log('Running on server');
+} else {
+  // Client-side only code
+  console.log('Running on client');
+}
+
+// Use in components
+function MyComponent() {
+  const serverValue = isServer();
+
+  return <div>Is Server: {serverValue ? 'Yes' : 'No'}</div>;
+}`;
 
 export default function IsServerDemo() {
   const [mounted, setMounted] = useState(false);
   const currentValue = isServer();
 
-  useEffect(() => {
+  useEffect(function () {
     setMounted(true);
   }, []);
 
   return (
     <DemoLayout title="isServer" description="Check if code is running on the server">
-      <div
-        style={{
-          padding: 16,
-          background: '#f5f5f5',
-          borderRadius: 8,
-        }}
-      >
-        <p>
-          <strong>isServer():</strong> <code>{currentValue ? 'true' : 'false'}</code>
-        </p>
-        <p>
-          <strong>Hydration complete:</strong> <code>{mounted ? 'true' : 'false'}</code>
-        </p>
-      </div>
+      {/* Status */}
+      <StatusCard title="Environment State" description="Current execution environment">
+        <StatusRow label="isServer()" value={currentValue ? 'true' : 'false'} variant={currentValue ? 'warning' : 'success'} monospace />
+        <StatusRow label="Hydration complete" value={mounted ? 'true' : 'false'} variant={mounted ? 'success' : 'muted'} monospace />
+      </StatusCard>
 
-      <div style={{ marginTop: 16, color: '#666', fontSize: 14 }}>
-        <p>During SSR, isServer() returns true.</p>
-        <p>After hydration on client, isServer() returns false.</p>
-      </div>
+      {/* Explanation */}
+      <Card title="How it works">
+        <InfoBox variant="info">
+          <p style={{ margin: 0 }}>
+            In <strong>SSR (Next.js)</strong>, <code>isServer()</code> returns <code>true</code> during server rendering
+            and <code>false</code> after hydration on the client.
+          </p>
+        </InfoBox>
+
+        <div style={{ marginTop: '16px' }}>
+          <InfoBox variant="tip">
+            <p style={{ margin: 0 }}>
+              <strong>Tip:</strong> Use this to conditionally run code that should only execute on the server or client.
+              For example, accessing <code>window</code> or <code>document</code> should be guarded with <code>!isServer()</code>.
+            </p>
+          </InfoBox>
+        </div>
+      </Card>
+
+      {/* Code */}
+      <Card title="Implementation Code">
+        <CodeBlock code={EXAMPLE_CODE} />
+      </Card>
     </DemoLayout>
   );
 }
