@@ -1,44 +1,44 @@
 # Demo Page Guidelines
 
-새로운 데모 페이지를 작성할 때 따라야 할 가이드라인입니다.
+Guidelines for writing new demo pages.
 
-## 핵심 원칙
+## Core Principles
 
-1. **로직이 먼저 보여야 한다** - 스타일 코드가 핵심 로직을 가리면 안 됨
-2. **일관된 구조** - 모든 데모가 같은 패턴을 따름
-3. **재사용 컴포넌트 활용** - 반복 패턴은 공유 컴포넌트로
+1. **Logic should be visible first** - Style code should not obscure core logic
+2. **Consistent structure** - All demos follow the same pattern
+3. **Use shared components** - Repeated patterns use shared components
 
-## 데모 페이지 구조
+## Demo Page Structure
 
 ```tsx
 import { Button, Card, CodeBlock, InfoBox, StatusCard, StatusRow } from '@examples/shared';
 import { useMyHook } from '@react-simplikit/mobile';
 import { DemoLayout } from '../../components/DemoLayout';
 
-// 1. 코드 예제 상수 (상단에 분리)
+// 1. Code example constants (separated at top)
 const EXAMPLE_CODE = `import { useMyHook } from '@react-simplikit/mobile';
 ...`;
 
 export function MyHookDemo() {
-  // 2. 핵심 훅 사용 (상단에 명확히)
+  // 2. Core hook usage (clearly at top)
   const { value } = useMyHook();
 
   return (
     <DemoLayout title="useMyHook" description="Hook description">
-      {/* 3. 상태 표시 */}
+      {/* 3. Status display */}
       <StatusCard title="State" description="Real-time state">
         <StatusRow label="Value" value={value} monospace />
       </StatusCard>
 
-      {/* 4. 데모 영역 */}
+      {/* 4. Demo area */}
       <Card title="Demo">
         <InfoBox variant="info">
-          <strong>Key Pattern:</strong> 핵심 패턴 설명
+          <strong>Key Pattern:</strong> Core pattern explanation
         </InfoBox>
         {/* Interactive demo */}
       </Card>
 
-      {/* 5. 코드 예제 */}
+      {/* 5. Code example */}
       <Card title="Implementation Code">
         <CodeBlock code={EXAMPLE_CODE} />
       </Card>
@@ -47,24 +47,24 @@ export function MyHookDemo() {
 }
 ```
 
-## 공유 컴포넌트
+## Shared Components
 
 ### StatusRow
 
-상태 값을 key-value 형태로 표시합니다.
+Displays status values in key-value format.
 
 ```tsx
 <StatusRow
   label="Direction"
   value={direction || 'none'}
   variant="success"  // 'default' | 'success' | 'warning' | 'error' | 'muted'
-  monospace          // 코드 값에 사용
+  monospace          // Use for code values
 />
 ```
 
 ### StatusCard
 
-여러 StatusRow를 그룹화합니다.
+Groups multiple StatusRow components.
 
 ```tsx
 <StatusCard title="Lock State" description="Real-time status">
@@ -75,18 +75,18 @@ export function MyHookDemo() {
 
 ### InfoBox
 
-정보, 팁, 경고를 표시합니다.
+Displays information, tips, and warnings.
 
 ```tsx
-<InfoBox variant="info">    {/* 파란색 - 정보 */}
-<InfoBox variant="tip">     {/* 노란색 - 팁 */}
-<InfoBox variant="warning"> {/* 빨간색 - 경고 */}
-<InfoBox variant="neutral"> {/* 회색 - 중립 */}
+<InfoBox variant="info">    {/* Blue - Information */}
+<InfoBox variant="tip">     {/* Yellow - Tips */}
+<InfoBox variant="warning"> {/* Red - Warning */}
+<InfoBox variant="neutral"> {/* Gray - Neutral */}
 ```
 
 ### CodeBlock
 
-코드 예제를 표시합니다.
+Displays code examples.
 
 ```tsx
 const CODE = `function example() {
@@ -96,11 +96,11 @@ const CODE = `function example() {
 <CodeBlock code={CODE} />
 ```
 
-## 파일 구조
+## File Structure
 
 ```
 examples/
-├── shared/src/components/   # 공유 컴포넌트
+├── shared/src/components/   # Shared components
 │   ├── Button.tsx
 │   ├── Card.tsx
 │   ├── CodeBlock.tsx
@@ -108,29 +108,29 @@ examples/
 │   ├── InfoBox.tsx
 │   ├── StatusCard.tsx
 │   └── StatusRow.tsx
-├── with-nextjs/app/demos/   # Next.js 데모
+├── with-nextjs/app/demos/   # Next.js demos
 │   └── {hook-name}/page.tsx
-└── with-vite/src/pages/demos/  # Vite 데모
+└── with-vite/src/pages/demos/  # Vite demos
     └── {HookName}Demo.tsx
 ```
 
-## 체크리스트
+## Checklist
 
-새 데모 작성 시:
+When writing a new demo:
 
-- [ ] 핵심 훅/유틸 사용이 파일 상단에 명확히 보임
-- [ ] StatusCard로 실시간 상태 표시
-- [ ] InfoBox로 핵심 패턴/팁 강조
-- [ ] CodeBlock으로 사용 예제 제공
-- [ ] Vite와 Next.js 양쪽에 동일 데모 존재
-- [ ] 인라인 스타일 최소화 (공유 컴포넌트 활용)
+- [ ] Core hook/util usage is clearly visible at top of file
+- [ ] StatusCard displays real-time state
+- [ ] InfoBox highlights key patterns/tips
+- [ ] CodeBlock provides usage examples
+- [ ] Same demo exists for both Vite and Next.js
+- [ ] Minimize inline styles (use shared components)
 
-## 예시: Before vs After
+## Example: Before vs After
 
-### Before (스타일이 로직을 가림)
+### Before (styles obscure logic)
 
 ```tsx
-// 220줄, 핵심 로직이 스타일 사이에 묻힘
+// 220 lines, core logic buried in styles
 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
   <span style={{ fontWeight: 500 }}>Modal 1:</span>
   <span style={{ color: showModal1 ? '#16a34a' : '#9ca3af' }}>
@@ -139,10 +139,10 @@ examples/
 </div>
 ```
 
-### After (로직이 명확히 보임)
+### After (logic is clearly visible)
 
 ```tsx
-// 164줄, 핵심 로직이 바로 보임
+// 164 lines, core logic is immediately visible
 <StatusRow
   label="Modal 1"
   value={showModal1 ? 'Open' : 'Closed'}
