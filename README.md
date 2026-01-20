@@ -31,6 +31,10 @@ function Component() {
 }
 ```
 
+## SSR Support
+
+All hooks are SSR-safe. They return safe defaults during server rendering and activate after hydration. You can use them in Next.js (App Router, Pages Router), Remix, or any SSR framework without additional configuration.
+
 ## Contributing
 
 Contributions are welcome from everyone in the community. Please check the contribution guide linked below.
