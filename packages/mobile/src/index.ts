@@ -1,6 +1,7 @@
 // Hooks
 export { useAvoidKeyboard } from './hooks/useAvoidKeyboard.ts';
 export { useBodyScrollLock } from './hooks/useBodyScrollLock.ts';
+export { type PageVisibility, usePageVisibility, type VisibilityState } from './hooks/usePageVisibility/index.ts';
 export { useScrollDirection } from './hooks/useScrollDirection.ts';
 export { useVisualViewport } from './hooks/useVisualViewport.ts';
 
