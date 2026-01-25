@@ -70,8 +70,16 @@ export function UseBodyScrollLockDemo() {
       <div style={{ paddingBottom: '128px' }}>
         {/* Status */}
         <StatusCard title="Lock State" description="Real-time body scroll lock status">
-          <StatusRow label="Modal 1" value={showModal1 ? 'Open' : 'Closed'} variant={showModal1 ? 'success' : 'muted'} />
-          <StatusRow label="Modal 2" value={showModal2 ? 'Open' : 'Closed'} variant={showModal2 ? 'success' : 'muted'} />
+          <StatusRow
+            label="Modal 1"
+            value={showModal1 ? 'Open' : 'Closed'}
+            variant={showModal1 ? 'success' : 'muted'}
+          />
+          <StatusRow
+            label="Modal 2"
+            value={showModal2 ? 'Open' : 'Closed'}
+            variant={showModal2 ? 'success' : 'muted'}
+          />
           <StatusRow
             label="Body Locked"
             value={hasModal ? '🔒 Locked' : '🔓 Unlocked'}
@@ -139,7 +147,13 @@ export function UseBodyScrollLockDemo() {
             Open Modal 2 (Nested)
           </Button>
           <div
-            style={{ maxHeight: '150px', overflowY: 'auto', backgroundColor: '#f9fafb', padding: '16px', borderRadius: '4px' }}
+            style={{
+              maxHeight: '150px',
+              overflowY: 'auto',
+              backgroundColor: '#f9fafb',
+              padding: '16px',
+              borderRadius: '4px',
+            }}
           >
             {Array.from({ length: 8 }).map((_, i) => (
               <p key={i} style={{ fontSize: '14px', marginBottom: '8px' }}>
