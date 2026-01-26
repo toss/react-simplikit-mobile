@@ -35,8 +35,7 @@ export function IsServerDemo() {
       {/* Status */}
       <StatusCard title="Environment State" description="Current execution environment">
         <StatusRow
-          label="i
-        s Server()"
+          label="is Server()"
           value={currentValue ? 'true' : 'false'}
           variant={currentValue ? 'warning' : 'success'}
           monospace
@@ -53,8 +52,7 @@ export function IsServerDemo() {
       <Card title="How it works">
         <InfoBox variant="info">
           <p style={{ margin: 0 }}>
-            {''}
-            Iduringn <strong>CSR (Vite)</strong>, <code>isServer()</code> always returns <code>false</code>.
+            During <strong>CSR (Vite)</strong>, <code>isServer()</code> always returns <code>false</code>.
             <br />
             There is no SSR step, so it&apos;s always running on the client.
           </p>
