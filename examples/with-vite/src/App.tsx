@@ -6,12 +6,14 @@ import { UseBodyScrollLockDemo } from './pages/demos/UseBodyScrollLockDemo.tsx';
 import { UseScrollDirectionDemo } from './pages/demos/UseScrollDirectionDemo.tsx';
 import { UseVisualViewportDemo } from './pages/demos/UseVisualViewportDemo.tsx';
 import { Home } from './pages/Home.tsx';
+import { IntroPage } from './pages/IntroPage.tsx';
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/intro" element={<IntroPage />} />
         <Route path="/demos/is-server" element={<IsServerDemo />} />
         <Route path="/demos/use-body-scroll-lock" element={<UseBodyScrollLockDemo />} />
         <Route path="/demos/use-scroll-direction" element={<UseScrollDirectionDemo />} />

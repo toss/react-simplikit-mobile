@@ -6,6 +6,33 @@ export function Home() {
       <header style={{ marginBottom: 32 }}>
         <h1 style={{ fontSize: 36, marginBottom: 8 }}>@react-simplikit/mobile</h1>
         <p style={{ fontSize: 18, color: '#666' }}>Mobile Examples Playground - Test on your mobile device!</p>
+        <Link
+          to="/intro"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 8,
+            marginTop: 16,
+            padding: '12px 24px',
+            background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+            color: '#fff',
+            borderRadius: 10,
+            textDecoration: 'none',
+            fontWeight: 600,
+            fontSize: 14,
+            transition: 'transform 0.2s, box-shadow 0.2s',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.transform = 'translateY(-2px)';
+            e.currentTarget.style.boxShadow = '0 8px 20px rgba(99, 102, 241, 0.4)';
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = 'none';
+          }}
+        >
+          ✨ View Intro Page
+        </Link>
       </header>
 
       <section style={{ marginBottom: 32 }}>
