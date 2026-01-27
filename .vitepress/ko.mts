@@ -21,42 +21,114 @@ export const ko = defineConfig({
 
 function nav(): DefaultTheme.NavItem[] {
   return [
-    { text: '홈', link: '/ko' },
-    { text: '소개', link: '/ko/intro.html' },
-    { text: '레퍼런스', link: '/ko/components/ImpressionArea.html' },
+    { text: '홈', link: '/ko/' },
+    { text: '설치하기', link: '/ko/installation' },
+    { text: 'API 레퍼런스', link: '/ko/hooks/useAvoidKeyboard' },
+    { text: 'Playground', link: '/playground/' },
+    { text: '실험', link: '/ko/experiments/' },
+    { text: 'Core', link: '/core/ko/' },
   ];
 }
 
 function sidebar(): DefaultTheme.Sidebar {
-  return [
-    {
-      text: '가이드',
-      items: [
-        { text: '소개', link: '/ko/intro' },
-        { text: 'react-simplikit, 선택의 이유', link: '/ko/why-react-simplikit-matters' },
-        { text: '설치하기', link: '/ko/installation' },
-        { text: '설계 원칙', link: '/ko/design-principles' },
-        { text: '기여하기', link: '/ko/contributing' },
-      ],
-    },
-    {
-      text: '레퍼런스',
-      items: sortByText([
-        {
-          text: '컴포넌트',
-          items: getSidebarItems(sourceRoot, 'components', '*', 'ko'),
-        },
-        {
-          text: '훅',
-          items: getSidebarItems(sourceRoot, 'hooks', '*', 'ko'),
-        },
-        {
-          text: '유틸리티',
-          items: getSidebarItems(sourceRoot, 'utils', '*', 'ko'),
-        },
-      ]),
-    },
-  ];
+  return {
+    '/ko/': [
+      {
+        text: '가이드',
+        items: [
+          { text: '소개', link: '/ko/' },
+          { text: '설치하기', link: '/ko/installation' },
+          { text: 'Playground', link: '/playground/' },
+          { text: '실험', link: '/ko/experiments/' },
+        ],
+      },
+      {
+        text: '훅',
+        items: [
+          { text: 'useAvoidKeyboard', link: '/ko/hooks/useAvoidKeyboard' },
+          { text: 'useKeyboardHeight', link: '/ko/hooks/useKeyboardHeight' },
+          { text: 'useVisualViewport', link: '/ko/hooks/useVisualViewport' },
+          { text: 'useScrollDirection', link: '/ko/hooks/useScrollDirection' },
+          { text: 'useBodyScrollLock', link: '/ko/hooks/useBodyScrollLock' },
+          { text: 'useBatteryStatus', link: '/ko/hooks/useBatteryStatus' },
+        ],
+      },
+      {
+        text: '유틸리티',
+        items: [
+          { text: 'getKeyboardHeight', link: '/ko/utils/getKeyboardHeight' },
+          { text: 'isKeyboardVisible', link: '/ko/utils/isKeyboardVisible' },
+          { text: 'bodyScrollLock', link: '/ko/utils/bodyScrollLock' },
+          { text: 'isServer', link: '/ko/utils/isServer' },
+        ],
+      },
+    ],
+    '/ko/experiments/': [
+      {
+        text: '랜딩 실험',
+        items: [
+          { text: '개요', link: '/ko/experiments/' },
+        ],
+      },
+      {
+        text: '모던 스타일',
+        items: [
+          { text: 'Bento Grid', link: '/ko/experiments/bento' },
+          { text: 'Gradient Orb', link: '/ko/experiments/gradient-orb' },
+          { text: 'Apple', link: '/ko/experiments/apple' },
+        ],
+      },
+      {
+        text: '클래식 스타일',
+        items: [
+          { text: 'Minimal', link: '/ko/experiments/minimal' },
+          { text: 'Premium', link: '/ko/experiments/premium' },
+          { text: 'Developer', link: '/ko/experiments/developer' },
+          { text: 'Foundation', link: '/ko/experiments/foundation' },
+          { text: 'Dark Modern', link: '/ko/experiments/dark-modern' },
+          { text: 'Claude Code', link: '/ko/experiments/claude-code' },
+        ],
+      },
+    ],
+    '/core/ko/': [
+      {
+        text: '가이드',
+        items: [
+          { text: '소개', link: '/core/ko/intro' },
+          { text: 'react-simplikit, 선택의 이유', link: '/core/ko/why-react-simplikit-matters' },
+          { text: '설치하기', link: '/core/ko/installation' },
+          { text: '설계 원칙', link: '/core/ko/design-principles' },
+          { text: '기여하기', link: '/core/ko/contributing' },
+        ],
+      },
+      {
+        text: '레퍼런스',
+        items: sortByText([
+          {
+            text: '컴포넌트',
+            items: getSidebarItems(sourceRoot, 'components', '*', 'ko').map(item => ({
+              ...item,
+              link: `/core${item.link}`,
+            })),
+          },
+          {
+            text: '훅',
+            items: getSidebarItems(sourceRoot, 'hooks', '*', 'ko').map(item => ({
+              ...item,
+              link: `/core${item.link}`,
+            })),
+          },
+          {
+            text: '유틸리티',
+            items: getSidebarItems(sourceRoot, 'utils', '*', 'ko').map(item => ({
+              ...item,
+              link: `/core${item.link}`,
+            })),
+          },
+        ]),
+      },
+    ],
+  };
 }
 
 export const search: DefaultTheme.LocalSearchOptions['locales'] = {

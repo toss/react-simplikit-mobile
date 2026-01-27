@@ -6,6 +6,23 @@ export function Home() {
       <header style={{ marginBottom: 32 }}>
         <h1 style={{ fontSize: 36, marginBottom: 8 }}>@react-simplikit/mobile</h1>
         <p style={{ fontSize: 18, color: '#666' }}>Mobile Examples Playground - Test on your mobile device!</p>
+        <div style={{ display: 'flex', gap: 12, marginTop: 16 }}>
+          <Link
+            to="/landing"
+            style={{
+              display: 'inline-block',
+              padding: '8px 16px',
+              backgroundColor: '#3b82f6',
+              color: '#fff',
+              borderRadius: 6,
+              textDecoration: 'none',
+              fontSize: 14,
+              fontWeight: 500,
+            }}
+          >
+            View Landing Page
+          </Link>
+        </div>
       </header>
 
       <section style={{ marginBottom: 32 }}>
@@ -58,7 +75,7 @@ export function Home() {
         </nav>
       </section>
 
-      <section>
+      <section style={{ marginBottom: 32 }}>
         <h2
           style={{
             fontSize: 24,
