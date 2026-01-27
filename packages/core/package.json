@@ -4,13 +4,13 @@
   "description": "Lightweight yet powerful library providing various utilities for React",
   "type": "module",
   "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "module": "./esm/index.js",
+  "types": "./dist/index.d.cts",
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "types": "./esm/index.d.ts",
+        "default": "./esm/index.js"
       },
       "require": {
         "types": "./dist/index.d.cts",
@@ -20,7 +20,8 @@
     "./package.json": "./package.json"
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "esm/**/*"
   ],
   "sideEffects": false,
   "keywords": [
@@ -39,7 +40,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsup",
-    "clean": "rimraf ./dist",
+    "clean": "rimraf ./dist ./esm",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
