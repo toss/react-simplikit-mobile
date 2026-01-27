@@ -5815,35 +5815,6 @@ const RAW_RUNTIME_STATE =
           "vitest"\
         ],\
         "linkType": "HARD"\
-      }],\
-      ["virtual:b233cf47216f70d57548bde23cf92a55aa5506d294f2ac4eabc332f2bf74436830c0324bc0bd31cec9ba342547655d9489e9875f253f515f0433cc269179f63d#npm:2.1.9", {\
-        "packageLocation": "./.yarn/__virtual__/@vitest-coverage-v8-virtual-71ae0188b7/0/cache/@vitest-coverage-v8-npm-2.1.9-95e7812374-ccf5871954.zip/node_modules/@vitest/coverage-v8/",\
-        "packageDependencies": [\
-          ["@ampproject/remapping", "npm:2.3.0"],\
-          ["@bcoe/v8-coverage", "npm:0.2.3"],\
-          ["@types/vitest", null],\
-          ["@types/vitest__browser", null],\
-          ["@vitest/browser", null],\
-          ["@vitest/coverage-v8", "virtual:b233cf47216f70d57548bde23cf92a55aa5506d294f2ac4eabc332f2bf74436830c0324bc0bd31cec9ba342547655d9489e9875f253f515f0433cc269179f63d#npm:2.1.9"],\
-          ["debug", "virtual:643ed7cc338bcf145a82d8b05b3bef6bcf150ca545df386225596f10ce53cc90b88b3ca83e348ade1ccea5f3f8e76c92d2f0e2ba544da60d40aff9921c56872d#npm:4.4.0"],\
-          ["istanbul-lib-coverage", "npm:3.2.2"],\
-          ["istanbul-lib-report", "npm:3.0.1"],\
-          ["istanbul-lib-source-maps", "npm:5.0.6"],\
-          ["istanbul-reports", "npm:3.1.7"],\
-          ["magic-string", "npm:0.30.17"],\
-          ["magicast", "npm:0.3.5"],\
-          ["std-env", "npm:3.9.0"],\
-          ["test-exclude", "npm:7.0.1"],\
-          ["tinyrainbow", "npm:1.2.0"],\
-          ["vitest", "virtual:b8ca648f23ac8db9e48f501f3417b5d22664f520096d4c3f324c7f27acb059637b178631fb2aa9474c5307a2c176eb80c2a4069538d26cb000262efba27773fe#npm:2.1.9"]\
-        ],\
-        "packagePeers": [\
-          "@types/vitest",\
-          "@types/vitest__browser",\
-          "@vitest/browser",\
-          "vitest"\
-        ],\
-        "linkType": "HARD"\
       }]\
     ]],\
     ["@vitest/expect", [\
@@ -11323,19 +11294,50 @@ const RAW_RUNTIME_STATE =
       ["workspace:packages/core", {\
         "packageLocation": "./packages/core/",\
         "packageDependencies": [\
+          ["@changesets/changelog-github", "npm:0.5.1"],\
+          ["@changesets/cli", "npm:2.29.7"],\
+          ["@eslint/js", "npm:9.24.0"],\
           ["@testing-library/dom", "npm:10.4.0"],\
           ["@testing-library/jest-dom", "npm:6.6.3"],\
           ["@testing-library/react", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:16.3.0"],\
+          ["@trivago/prettier-plugin-sort-imports", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:5.2.2"],\
+          ["@types/node", "npm:22.14.0"],\
           ["@types/react", "npm:19.1.0"],\
           ["@types/react-dom", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:19.1.2"],\
-          ["@vitest/coverage-v8", "virtual:b233cf47216f70d57548bde23cf92a55aa5506d294f2ac4eabc332f2bf74436830c0324bc0bd31cec9ba342547655d9489e9875f253f515f0433cc269179f63d#npm:2.1.9"],\
+          ["@vitest/coverage-v8", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:2.1.9"],\
+          ["commander", "npm:13.1.0"],\
+          ["comment-parser", "npm:1.4.1"],\
+          ["corepack", "npm:0.30.0"],\
+          ["dotenv", "npm:16.5.0"],\
+          ["esbuild", "npm:0.24.2"],\
+          ["eslint", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:9.24.0"],\
+          ["eslint-config-prettier", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:9.1.0"],\
+          ["eslint-plugin-import", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:2.31.0"],\
+          ["eslint-plugin-prettier", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:5.2.6"],\
+          ["eslint-plugin-react", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:7.37.5"],\
+          ["eslint-plugin-react-hooks", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:5.2.0"],\
+          ["eslint-plugin-simple-import-sort", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:12.1.1"],\
+          ["eslint-plugin-unused-imports", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:4.1.4"],\
+          ["fast-glob", "npm:3.3.3"],\
+          ["globals", "npm:15.15.0"],\
+          ["jsdom", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:25.0.1"],\
+          ["listr2", "npm:8.3.2"],\
+          ["nanoid", "npm:5.1.5"],\
+          ["openai", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:4.93.0"],\
+          ["ora", "npm:8.2.0"],\
+          ["prettier", "npm:3.5.3"],\
+          ["prettier-plugin-sort-re-exports", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:0.1.0"],\
           ["react", "npm:19.1.0"],\
           ["react-dom", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:19.1.0"],\
           ["react-simplikit", "workspace:packages/core"],\
           ["rimraf", "npm:6.0.1"],\
           ["tsup", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:8.4.0"],\
+          ["tsx", "npm:4.19.3"],\
           ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"],\
-          ["vitest", "virtual:b8ca648f23ac8db9e48f501f3417b5d22664f520096d4c3f324c7f27acb059637b178631fb2aa9474c5307a2c176eb80c2a4069538d26cb000262efba27773fe#npm:2.1.9"]\
+          ["typescript-eslint", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:8.29.1"],\
+          ["vitepress", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:1.6.3"],\
+          ["vitest", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:2.1.9"],\
+          ["vue", "virtual:539b451571f0988c0af51257f55a5a782178df937d372062375b750931875a6facac716a154eb2b4aa1e0ffc809cf9d1dd6a0b387bd1b99854bdf0c986f9a560#npm:3.5.13"]\
         ],\
         "linkType": "SOFT"\
       }]\
