@@ -1,5 +1,5 @@
 {
-  "name": "@react-simplikit",
+  "name": "@react-simplikit/root",
   "type": "module",
   "workspaces": [
     "packages/*",
@@ -14,7 +14,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf ./coverage ./node_modules",
-    "clean:all": "yarn clean && yarn workspaces foreach -A run clean",
+    "clean:all": "yarn clean && yarn workspaces foreach -Ap run clean",
     "example:vite": "yarn workspace with-vite dev",
     "example:next": "yarn workspace with-nextjs dev",
     "scaffold": "tsx .scripts/index.ts scaffold",
@@ -25,21 +25,17 @@
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview",
-    "fix": "yarn run fix:lint && yarn run fix:format",
+    "fix": "yarn fix:lint && yarn fix:format",
     "fix:format": "prettier . --write",
-    "fix:lint": "yarn workspace react-simplikit lint --fix",
-    "test": "yarn run test:lint && yarn run test:format && yarn run test:type && yarn run test:spec && yarn run test:coverage",
+    "fix:lint": "yarn workspaces foreach -Ap run lint --fix",
+    "test": "yarn test:lint && yarn test:format && yarn test:type && yarn test:spec",
     "test:format": "prettier . --list-different",
-    "test:lint": "yarn workspace react-simplikit lint",
-    "test:type": "yarn workspace react-simplikit typecheck",
-    "test:spec": "yarn workspace react-simplikit test",
-    "test:coverage": "yarn workspace react-simplikit test:coverage",
-    "test:mobile": "yarn workspace @react-simplikit/mobile test",
-    "test:all": "yarn workspaces foreach -A run test",
-    "build": "yarn workspace react-simplikit build",
-    "build:mobile": "yarn workspace @react-simplikit/mobile build",
-    "build:all": "yarn workspaces foreach -A run build",
-    "prepack": "yarn build:all"
+    "test:lint": "yarn workspaces foreach -Ap run lint",
+    "test:type": "yarn workspaces foreach -Ap run typecheck",
+    "test:spec": "yarn workspaces foreach -Ap run test",
+    "test:coverage": "yarn workspaces foreach -Ap run test:coverage",
+    "build": "yarn workspaces foreach -Apt run build",
+    "prepack": "yarn build"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.1",
