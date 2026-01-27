@@ -19,6 +19,7 @@
     "esm/**/*"
   ],
   "scripts": {
+    "build": "tsup",
     "clean": "rimraf ./dist ./esm ./coverage ./node_modules",
     "scaffold": "tsx .scripts/index.ts scaffold",
     "changeset": "changeset",
