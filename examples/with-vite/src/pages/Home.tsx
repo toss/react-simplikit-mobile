@@ -26,6 +26,16 @@ export function Home() {
             description="Prevent body scroll with nested modals"
           />
           <DemoLink
+            to="/demos/use-page-visibility"
+            title="usePageVisibility"
+            description="Detect tab visibility changes"
+          />
+          <DemoLink
+            to="/demos/use-network-status"
+            title="useNetworkStatus"
+            description="Access Network Information API"
+          />
+          <DemoLink
             to="/demos/use-scroll-direction"
             title="useScrollDirection"
             description="Auto-hide navigation on scroll down"
@@ -55,6 +65,11 @@ export function Home() {
             title="bodyScrollLock Utils"
             description="Programmatic scroll lock control"
           />
+          <DemoLink
+            to="/demos/get-safe-area-inset"
+            title="getSafeAreaInset"
+            description="Get device safe area insets (notch, home indicator)"
+          />
         </nav>
       </section>
 
@@ -73,7 +88,6 @@ export function Home() {
           <DemoLink to="/demos/is-server" title="isServer" description="Check if code is running on server" />
         </nav>
       </section>
-
     </div>
   );
 }
