@@ -1,0 +1,4 @@
+{
+  "installCommand": "corepack enable && yarn install",
+  "buildCommand": "cd ../.. && yarn build && cd examples/with-vite && yarn build"
+}
