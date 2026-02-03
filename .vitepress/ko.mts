@@ -1,7 +1,7 @@
 import { defineConfig, DefaultTheme } from 'vitepress';
 import { getSidebarItems } from './libs/getSidebarItems.mts';
 import { sortByText } from './libs/sortByText.mts';
-import { sourceRoot } from './shared.mts';
+import { coreSourceRoot, mobileDocsRoot } from './shared.mts';
 
 export const ko = defineConfig({
   lang: 'ko',
@@ -9,7 +9,7 @@ export const ko = defineConfig({
     nav: nav(),
     sidebar: sidebar(),
     editLink: {
-      pattern: 'https://github.com/toss/react-simplikit/edit/main/src/:path',
+      pattern: 'https://github.com/toss/react-simplikit/edit/main/:path',
       text: 'GitHub에서 수정하기',
     },
     footer: {
@@ -22,39 +22,63 @@ export const ko = defineConfig({
 function nav(): DefaultTheme.NavItem[] {
   return [
     { text: '홈', link: '/ko' },
-    { text: '소개', link: '/ko/intro.html' },
-    { text: '레퍼런스', link: '/ko/components/ImpressionArea.html' },
+    {
+      text: 'Core',
+      items: [
+        { text: 'Hooks', link: '/ko/core/hooks/useBooleanState' },
+        { text: 'Components', link: '/ko/core/components/ImpressionArea' },
+        { text: 'Utils', link: '/ko/core/utils/buildContext' },
+      ],
+    },
+    {
+      text: 'Mobile',
+      items: [
+        { text: 'Hooks', link: '/ko/mobile/hooks/useAvoidKeyboard' },
+      ],
+    },
   ];
 }
 
 function sidebar(): DefaultTheme.Sidebar {
   return [
     {
-      text: '가이드',
+      text: '시작하기',
       items: [
         { text: '소개', link: '/ko/intro' },
-        { text: 'react-simplikit, 선택의 이유', link: '/ko/why-react-simplikit-matters' },
         { text: '설치하기', link: '/ko/installation' },
-        { text: '설계 원칙', link: '/ko/design-principles' },
-        { text: '기여하기', link: '/ko/contributing' },
       ],
     },
     {
-      text: '레퍼런스',
+      text: 'Core (react-simplikit)',
+      collapsed: false,
       items: sortByText([
         {
           text: '컴포넌트',
-          items: getSidebarItems(sourceRoot, 'components', '*', 'ko'),
+          collapsed: true,
+          items: getSidebarItems(coreSourceRoot, 'core', 'components', '*', 'ko'),
         },
         {
           text: '훅',
-          items: getSidebarItems(sourceRoot, 'hooks', '*', 'ko'),
+          collapsed: true,
+          items: getSidebarItems(coreSourceRoot, 'core', 'hooks', '*', 'ko'),
         },
         {
           text: '유틸리티',
-          items: getSidebarItems(sourceRoot, 'utils', '*', 'ko'),
+          collapsed: true,
+          items: getSidebarItems(coreSourceRoot, 'core', 'utils', '*', 'ko'),
         },
       ]),
+    },
+    {
+      text: 'Mobile (@react-simplikit/mobile)',
+      collapsed: false,
+      items: [
+        {
+          text: '훅',
+          collapsed: true,
+          items: getSidebarItems(mobileDocsRoot, 'mobile', 'hooks', 'ko'),
+        },
+      ],
     },
   ];
 }

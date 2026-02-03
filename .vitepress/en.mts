@@ -1,7 +1,7 @@
 import { defineConfig, DefaultTheme } from 'vitepress';
 import { getSidebarItems } from './libs/getSidebarItems.mts';
 import { sortByText } from './libs/sortByText.mts';
-import { sourceRoot } from './shared.mts';
+import { coreSourceRoot, mobileDocsRoot } from './shared.mts';
 
 export const en = defineConfig({
   lang: 'en',
@@ -9,7 +9,7 @@ export const en = defineConfig({
     nav: nav(),
     sidebar: sidebar(),
     editLink: {
-      pattern: 'https://github.com/toss/react-simplikit/edit/main/src/:path',
+      pattern: 'https://github.com/toss/react-simplikit/edit/main/:path',
       text: 'Edit this page on GitHub',
     },
     footer: {
@@ -22,39 +22,63 @@ export const en = defineConfig({
 function nav(): DefaultTheme.NavItem[] {
   return [
     { text: 'Home', link: '/' },
-    { text: 'Introduction', link: '/intro.html' },
-    { text: 'Reference', link: '/components/ImpressionArea.html' },
+    {
+      text: 'Core',
+      items: [
+        { text: 'Hooks', link: '/core/hooks/useBooleanState' },
+        { text: 'Components', link: '/core/components/ImpressionArea' },
+        { text: 'Utils', link: '/core/utils/buildContext' },
+      ],
+    },
+    {
+      text: 'Mobile',
+      items: [
+        { text: 'Hooks', link: '/mobile/hooks/useAvoidKeyboard' },
+      ],
+    },
   ];
 }
 
 function sidebar(): DefaultTheme.Sidebar {
   return [
     {
-      text: 'Guide',
+      text: 'Getting Started',
       items: [
         { text: 'Introduction', link: '/intro' },
-        { text: 'Why react-simplikit matters', link: '/why-react-simplikit-matters' },
         { text: 'Installation', link: '/installation' },
-        { text: 'Design Principles', link: '/design-principles' },
-        { text: 'Contributing', link: '/contributing' },
       ],
     },
     {
-      text: 'Reference',
+      text: 'Core (react-simplikit)',
+      collapsed: false,
       items: sortByText([
         {
           text: 'Components',
-          items: getSidebarItems(sourceRoot, 'components', '*'),
+          collapsed: true,
+          items: getSidebarItems(coreSourceRoot, 'core', 'components', '*'),
         },
         {
           text: 'Hooks',
-          items: getSidebarItems(sourceRoot, 'hooks', '*'),
+          collapsed: true,
+          items: getSidebarItems(coreSourceRoot, 'core', 'hooks', '*'),
         },
         {
           text: 'Utils',
-          items: getSidebarItems(sourceRoot, 'utils', '*'),
+          collapsed: true,
+          items: getSidebarItems(coreSourceRoot, 'core', 'utils', '*'),
         },
       ]),
+    },
+    {
+      text: 'Mobile (@react-simplikit/mobile)',
+      collapsed: false,
+      items: [
+        {
+          text: 'Hooks',
+          collapsed: true,
+          items: getSidebarItems(mobileDocsRoot, 'mobile', 'hooks'),
+        },
+      ],
     },
   ];
 }

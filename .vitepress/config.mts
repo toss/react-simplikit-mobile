@@ -8,16 +8,35 @@ export default defineConfig({
     root: { label: 'English', ...en },
     ko: { label: '한국어', ...ko },
   },
-  srcDir: 'src',
+  srcDir: '.',
+  srcExclude: [
+    '**/README*.md',
+    '**/CHANGELOG.md',
+    '**/CONTRIBUTING.md',
+    '**/node_modules/**',
+    '**/.changeset/**',
+    '**/examples/**',
+    '**/.github/**',
+    '**/packages/mobile/**',
+  ],
   rewrites: {
-    'docs/ko/:document.md': 'ko/:document.md',
+    // Docs pages
+    'docs/en/index.md': 'index.md',
     'docs/en/:document.md': ':document.md',
-    'components/:implementation/ko/:implementation.md': 'ko/components/:implementation.md',
-    'components/:implementation/:implementation.md': 'components/:implementation.md',
-    'hooks/:implementation/ko/:implementation.md': 'ko/hooks/:implementation.md',
-    'hooks/:implementation/:implementation.md': 'hooks/:implementation.md',
-    'utils/:implementation/ko/:implementation.md': 'ko/utils/:implementation.md',
-    'utils/:implementation/:implementation.md': 'utils/:implementation.md',
+    'docs/ko/index.md': 'ko/index.md',
+    'docs/ko/:document.md': 'ko/:document.md',
+
+    // Core package
+    'packages/core/src/components/:impl/ko/:impl.md': 'ko/core/components/:impl.md',
+    'packages/core/src/components/:impl/:impl.md': 'core/components/:impl.md',
+    'packages/core/src/hooks/:impl/ko/:impl.md': 'ko/core/hooks/:impl.md',
+    'packages/core/src/hooks/:impl/:impl.md': 'core/hooks/:impl.md',
+    'packages/core/src/utils/:impl/ko/:impl.md': 'ko/core/utils/:impl.md',
+    'packages/core/src/utils/:impl/:impl.md': 'core/utils/:impl.md',
+
+    // Mobile package (from docs/mobile)
+    'docs/mobile/hooks/ko/:impl.md': 'ko/mobile/hooks/:impl.md',
+    'docs/mobile/hooks/:impl.md': 'mobile/hooks/:impl.md',
   },
   head: [
     ['link', { rel: 'stylesheet', href: 'https://static.toss.im/tps/main.css' }],
@@ -28,7 +47,7 @@ export default defineConfig({
     ['link', { rel: 'apple-touch-icon', href: '/favicon/apple-touch-icon.png' }],
     ['link', { rel: 'manifest', href: '/favicon/site.webmanifest' }],
     ['meta', { name: 'author', content: 'Viva Republica, Inc.' }],
-    ['meta', { name: 'keywords', content: 'react, hooks, utility, library, react-simplikit' }],
+    ['meta', { name: 'keywords', content: 'react, hooks, utility, library, react-simplikit, mobile' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: 'react-simplikit' }],

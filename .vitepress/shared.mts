@@ -1,3 +1,4 @@
 import path from 'path';
 
-export const sourceRoot = path.resolve(import.meta.dirname, '..', 'src');
+export const coreSourceRoot = path.resolve(import.meta.dirname, '..', 'packages/core/src');
+export const mobileDocsRoot = path.resolve(import.meta.dirname, '..', 'docs/mobile');

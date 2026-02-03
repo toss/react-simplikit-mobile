@@ -39,4 +39,4 @@ coverage
 .claude
 CLAUDE.md
 
-docs/
+# docs/ - VitePress 문서는 포함
