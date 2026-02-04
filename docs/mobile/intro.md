@@ -1,3 +1,0 @@
-# @react-simplikit/mobile
-
-<!-- TODO -->

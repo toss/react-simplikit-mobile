@@ -1,3 +1,3 @@
 import path from 'path';
 
-export const docsRoot = path.resolve(import.meta.dirname, '..', 'docs');
+export const sourceRoot = path.resolve(import.meta.dirname, '..', 'src');
