@@ -9,6 +9,7 @@ import { method3Meta, Method3Tossbank } from './methods/Method3Tossbank.tsx';
 import { Method4FrontendMobile, method4Meta } from './methods/Method4FrontendMobile.tsx';
 import { Method5FreezeGuard, method5Meta } from './methods/Method5FreezeGuard.tsx';
 import { method6Meta, Method6Proposed } from './methods/Method6Proposed.tsx';
+import { method7Meta, Method7NotionComplete } from './methods/Method7NotionComplete.tsx';
 
 const METHODS = [
   { id: method0Meta.id, name: method0Meta.name, Component: Method0BestPractice },
@@ -18,6 +19,7 @@ const METHODS = [
   { id: method4Meta.id, name: method4Meta.name, Component: Method4FrontendMobile },
   { id: method5Meta.id, name: method5Meta.name, Component: Method5FreezeGuard },
   { id: method6Meta.id, name: method6Meta.name, Component: Method6Proposed },
+  { id: method7Meta.id, name: method7Meta.name, Component: Method7NotionComplete },
 ] as const;
 
 /**
@@ -31,6 +33,7 @@ const METHODS = [
  * 4. Frontend-Mobile Method - VirtualKeyboard API + rAF
  * 5. Freeze + Guard Method - Complete prevention
  * 6. Proposed Improvement - Best practices combined
+ * 7. Notion Complete - Provider+Composer pattern (full implementation)
  */
 export function KeyboardAvoidanceDemo() {
   const [activeMethod, setActiveMethod] = useState(METHODS[0].id);
