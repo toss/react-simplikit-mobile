@@ -45,6 +45,11 @@ export function Home() {
             title="useVisualViewport"
             description="Track keyboard, zoom, and viewport changes"
           />
+          <DemoLink
+            to="/demos/keyboard-avoidance"
+            title="⭐ Keyboard Avoidance Comparison"
+            description="Compare 6 different methods to handle iOS keyboard issues"
+          />
         </nav>
       </section>
 

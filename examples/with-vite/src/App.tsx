@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { BodyScrollLockUtilDemo } from './pages/demos/BodyScrollLockUtilDemo.tsx';
 import { GetSafeAreaInsetDemo } from './pages/demos/GetSafeAreaInsetDemo.tsx';
 import { IsServerDemo } from './pages/demos/IsServerDemo.tsx';
+import { KeyboardAvoidanceDemo } from './pages/demos/keyboard-avoidance/index.tsx';
 import { UseBodyScrollLockDemo } from './pages/demos/UseBodyScrollLockDemo.tsx';
 import { UseNetworkStatusDemo } from './pages/demos/UseNetworkStatusDemo.tsx';
 import { UsePageVisibilityDemo } from './pages/demos/UsePageVisibilityDemo.tsx';
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/demos/use-visual-viewport" element={<UseVisualViewportDemo />} />
         <Route path="/demos/body-scroll-lock-util" element={<BodyScrollLockUtilDemo />} />
         <Route path="/demos/get-safe-area-inset" element={<GetSafeAreaInsetDemo />} />
+        <Route path="/demos/keyboard-avoidance" element={<KeyboardAvoidanceDemo />} />
       </Routes>
     </BrowserRouter>
   );
