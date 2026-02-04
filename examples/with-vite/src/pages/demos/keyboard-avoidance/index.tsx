@@ -38,6 +38,11 @@ export function KeyboardAvoidanceDemo() {
   const ActiveComponent = METHODS.find(m => m.id === activeMethod)?.Component ?? Method0BestPractice;
   const activeMethodName = METHODS.find(m => m.id === activeMethod)?.name ?? '';
 
+  const handleMethodChange = (methodId: string) => {
+    setActiveMethod(methodId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#fff' }}>
       {/* Sticky Header with DebugPanel */}
@@ -79,7 +84,7 @@ export function KeyboardAvoidanceDemo() {
             {METHODS.map(method => (
               <button
                 key={method.id}
-                onClick={() => setActiveMethod(method.id)}
+                onClick={() => handleMethodChange(method.id)}
                 style={{
                   padding: '8px 12px',
                   fontSize: '12px',
