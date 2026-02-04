@@ -66,7 +66,9 @@ export function Method3Tossbank() {
   // ---------------------------------------------------------------------------
 
   const keyboardOpen = useMemo(() => {
-    if (typeof window === 'undefined') return false;
+    if (typeof window === 'undefined') {
+      return false;
+    }
     const totalHeight = window.outerHeight || window.screen.availHeight;
     const ratio = keyboardHeight / totalHeight;
     const open = ratio > KEYBOARD_RATIO_THRESHOLD;

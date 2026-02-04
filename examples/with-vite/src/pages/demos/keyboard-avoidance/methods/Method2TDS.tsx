@@ -68,7 +68,9 @@ export function Method2TDS() {
   // ---------------------------------------------------------------------------
 
   const isKeyboardOpen = useMemo(() => {
-    if (typeof window === 'undefined') return false;
+    if (typeof window === 'undefined') {
+      return false;
+    }
     const totalHeight = window.outerHeight || window.screen.availHeight;
     const ratio = keyboardHeight / totalHeight;
     return ratio > KEYBOARD_RATIO_THRESHOLD;

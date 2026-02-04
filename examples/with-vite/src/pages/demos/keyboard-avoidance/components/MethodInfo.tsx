@@ -68,7 +68,9 @@ function InfoSection({
   icon: ReactNode;
   color?: string;
 }) {
-  if (items.length === 0) return null;
+  if (items.length === 0) {
+    return null;
+  }
 
   return (
     <div>

@@ -24,7 +24,9 @@ export function useFreezeRoot() {
   const isFrozenRef = useRef(false);
 
   const freeze = useCallback(() => {
-    if (isFrozenRef.current) return;
+    if (isFrozenRef.current) {
+      return;
+    }
 
     const html = document.documentElement;
     frozenScrollYRef.current = window.scrollY || 0;
@@ -39,7 +41,9 @@ export function useFreezeRoot() {
   }, []);
 
   const unfreeze = useCallback(() => {
-    if (!isFrozenRef.current) return;
+    if (!isFrozenRef.current) {
+      return;
+    }
 
     const html = document.documentElement;
 
@@ -75,7 +79,9 @@ export function guardScrollUntilKeyboardOpen(anchorY: number, onKeyboardOpen: ()
 
   const checkKeyboardOpen = () => {
     const visualViewport = window.visualViewport;
-    if (!visualViewport) return false;
+    if (visualViewport == null) {
+      return false;
+    }
     return window.innerHeight - visualViewport.height > KEYBOARD_OPEN_THRESHOLD;
   };
 

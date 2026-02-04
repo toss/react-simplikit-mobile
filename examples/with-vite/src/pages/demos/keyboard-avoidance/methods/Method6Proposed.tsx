@@ -72,8 +72,12 @@ function useAvoidKeyboardProposed(options: {
     return unsubscribe;
   }, []);
 
-  const getSnapshot = useCallback(() => getKeyboardHeight(), []);
-  const getServerSnapshot = useCallback(() => 0, []);
+  const getSnapshot = useCallback(() => {
+    return getKeyboardHeight();
+  }, []);
+  const getServerSnapshot = useCallback(() => {
+    return 0;
+  }, []);
 
   const keyboardHeight = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 

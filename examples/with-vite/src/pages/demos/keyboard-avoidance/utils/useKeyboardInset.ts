@@ -71,7 +71,9 @@ export function useKeyboardInset(options: UseKeyboardInsetOptions = {}): Keyboar
   // ---------------------------------------------------------------------------
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') {
+      return;
+    }
 
     // -------------------------------------------------------------------------
     // Scheduling Helper
@@ -82,7 +84,9 @@ export function useKeyboardInset(options: UseKeyboardInsetOptions = {}): Keyboar
         fn();
         return;
       }
-      if (rafRef.current != null) return;
+      if (rafRef.current != null) {
+        return;
+      }
       rafRef.current = requestAnimationFrame(() => {
         rafRef.current = null;
         fn();
@@ -95,7 +99,9 @@ export function useKeyboardInset(options: UseKeyboardInsetOptions = {}): Keyboar
 
     const computeFromVirtualKeyboard = (): number | null => {
       const virtualKeyboard = navigator.virtualKeyboard;
-      if (!virtualKeyboard?.boundingRect) return null;
+      if (virtualKeyboard?.boundingRect == null) {
+        return null;
+      }
 
       const candidate = Math.max(0, Math.round(virtualKeyboard.boundingRect.height));
       return candidate >= threshold ? candidate : 0;
@@ -103,7 +109,9 @@ export function useKeyboardInset(options: UseKeyboardInsetOptions = {}): Keyboar
 
     const computeFromVisualViewport = (): number | null => {
       const visualViewport = window.visualViewport;
-      if (!visualViewport) return null;
+      if (visualViewport == null) {
+        return null;
+      }
 
       const visualViewportHeight = Math.round(visualViewport.height);
       const candidate = Math.max(
@@ -228,7 +236,9 @@ export function useKeyboardInset(options: UseKeyboardInsetOptions = {}): Keyboar
   // Derived State
   // ---------------------------------------------------------------------------
 
-  const isOpen = useMemo(() => height >= threshold, [height, threshold]);
+  const isOpen = useMemo(() => {
+    return height >= threshold;
+  }, [height, threshold]);
 
   return { height, isOpen, viewportHeight };
 }

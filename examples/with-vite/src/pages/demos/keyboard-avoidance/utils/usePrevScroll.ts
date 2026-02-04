@@ -42,7 +42,9 @@ export function usePrevScroll(options: UsePrevScrollOptions) {
   const prevScrollRef = useRef(0);
 
   const scrollToPrev = useCallback(async () => {
-    if (!enable) return;
+    if (!enable) {
+      return;
+    }
 
     // Wait for keyboard to fully open
     await new Promise(resolve => setTimeout(resolve, delay));

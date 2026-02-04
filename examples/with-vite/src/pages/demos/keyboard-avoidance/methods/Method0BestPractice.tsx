@@ -83,7 +83,9 @@ function notify() {
 }
 
 function scheduleUpdate(fn: () => void) {
-  if (rafId != null) return;
+  if (rafId != null) {
+    return;
+  }
   rafId = requestAnimationFrame(() => {
     rafId = null;
     fn();

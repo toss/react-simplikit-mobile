@@ -75,7 +75,9 @@ export function Method5FreezeGuard() {
 
   const handleFocus = useCallback(
     (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      if (!isIOS) return;
+      if (!isIOS) {
+        return;
+      }
 
       const target = event.target;
       const scrollY = window.scrollY;
@@ -112,7 +114,9 @@ export function Method5FreezeGuard() {
   // ---------------------------------------------------------------------------
 
   const isKeyboardOpen = useMemo(() => {
-    if (typeof window === 'undefined') return false;
+    if (typeof window === 'undefined') {
+      return false;
+    }
     return keyboardHeight > KEYBOARD_HEIGHT_THRESHOLD;
   }, [keyboardHeight]);
 
