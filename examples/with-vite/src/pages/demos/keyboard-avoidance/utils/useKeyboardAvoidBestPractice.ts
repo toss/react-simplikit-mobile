@@ -79,8 +79,10 @@ export function useKeyboardAvoidBestPractice(
     const offset = Math.max(0, Math.round(scaleCorrectedHeight + safeAreaBottom));
 
     return {
-      // Use max() to handle both keyboard and safe-area (frontend-mobile pattern)
-      bottom: `max(${offset}px, env(safe-area-inset-bottom))`,
+      // Position above keyboard
+      bottom: `${offset}px`,
+      // Override safe-area padding when keyboard is open (keyboard covers safe area)
+      paddingBottom: '16px',
       transition: `bottom ${transitionDuration}ms ease-out`,
       // Conditional layer promotion
       willChange: 'bottom',
@@ -130,7 +132,9 @@ const KEYBOARD_THRESHOLD = 50;
 let keyboardState: KeyboardState = { height: 0, viewportHeight: 0, scale: 1 };
 let baseline = typeof window !== 'undefined' ? window.innerHeight : 0;
 let rafId: number | null = null;
+let focusOutAt: number = 0; // Timestamp of last focusout event
 const listeners: Set<() => void> = new Set();
+const FOCUS_OUT_SUPPRESS_MS = 500; // Suppress keyboard detection for 500ms after focusout
 
 // =============================================================================
 // useSyncExternalStore Interface
@@ -215,6 +219,18 @@ function maybeUpdateBaseline() {
 }
 
 function updateKeyboardState() {
+  // Suppress keyboard detection for a period after focusout
+  // iOS Safari's visualViewport doesn't update immediately when keyboard closes
+  const timeSinceFocusOut = Date.now() - focusOutAt;
+  if (focusOutAt > 0 && timeSinceFocusOut < FOCUS_OUT_SUPPRESS_MS) {
+    // Keep keyboard height at 0 during suppress period
+    if (keyboardState.height !== 0) {
+      keyboardState = { ...keyboardState, height: 0 };
+      notify();
+    }
+    return;
+  }
+
   const newState = computeKeyboardHeight();
   if (
     newState.height !== keyboardState.height ||
@@ -252,6 +268,36 @@ if (typeof window !== 'undefined') {
     visualViewport.addEventListener('resize', () => scheduleUpdate(updateKeyboardState));
     visualViewport.addEventListener('scroll', () => scheduleUpdate(updateKeyboardState));
   }
+
+  // Focus events - handle keyboard state based on input focus
+  // iOS Safari doesn't always fire visualViewport events reliably when keyboard closes
+  const onFocusIn = (e: FocusEvent) => {
+    const target = e.target as HTMLElement;
+    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+      // Reset suppress flag when input gains focus
+      focusOutAt = 0;
+    }
+  };
+
+  const onFocusOut = (e: FocusEvent) => {
+    const target = e.target as HTMLElement;
+    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+      // Record focusout time to suppress false keyboard detection
+      focusOutAt = Date.now();
+
+      // Force reset keyboard state immediately
+      keyboardState = { height: 0, viewportHeight: keyboardState.viewportHeight, scale: keyboardState.scale };
+      notify();
+
+      // Update baseline after keyboard closes
+      setTimeout(() => {
+        baseline = window.innerHeight;
+      }, FOCUS_OUT_SUPPRESS_MS);
+    }
+  };
+
+  document.addEventListener('focusin', onFocusIn, { passive: true });
+  document.addEventListener('focusout', onFocusOut, { passive: true });
 
   // VirtualKeyboard API (Chrome)
   const virtualKeyboard = navigator.virtualKeyboard;
