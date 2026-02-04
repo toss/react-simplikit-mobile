@@ -1,16 +1,19 @@
 import { defineConfig, DefaultTheme } from 'vitepress';
-import { getSidebarItems } from './libs/getSidebarItems.mts';
-import { sortByText } from './libs/sortByText.mts';
-import { sourceRoot } from './shared.mts';
+import { docsRoot } from './shared.mts';
+import glob from 'fast-glob';
+import path from 'path';
 
 export const en = defineConfig({
   lang: 'en',
   themeConfig: {
-    nav: nav(),
-    sidebar: sidebar(),
-    editLink: {
-      pattern: 'https://github.com/toss/react-simplikit/edit/main/src/:path',
-      text: 'Edit this page on GitHub',
+    nav: [
+      { text: 'Home', link: '/' },
+      { text: 'Mobile', link: '/mobile/' },
+      { text: 'Core', link: '/core/' },
+    ],
+    sidebar: {
+      '/core/': coreSidebar(),
+      '/mobile/': mobileSidebar(),
     },
     footer: {
       message: 'Released under the MIT License.',
@@ -19,42 +22,40 @@ export const en = defineConfig({
   },
 });
 
-function nav(): DefaultTheme.NavItem[] {
-  return [
-    { text: 'Home', link: '/' },
-    { text: 'Introduction', link: '/intro.html' },
-    { text: 'Reference', link: '/components/ImpressionArea.html' },
-  ];
-}
-
-function sidebar(): DefaultTheme.Sidebar {
+function coreSidebar(): DefaultTheme.SidebarItem[] {
   return [
     {
       text: 'Guide',
       items: [
-        { text: 'Introduction', link: '/intro' },
-        { text: 'Why react-simplikit matters', link: '/why-react-simplikit-matters' },
-        { text: 'Installation', link: '/installation' },
-        { text: 'Design Principles', link: '/design-principles' },
-        { text: 'Contributing', link: '/contributing' },
+        { text: 'Introduction', link: '/core/intro' },
+        { text: 'Why react-simplikit matters', link: '/core/why-react-simplikit-matters' },
+        { text: 'Installation', link: '/core/installation' },
+        { text: 'Design Principles', link: '/core/design-principles' },
+        { text: 'Contributing', link: '/core/contributing' },
       ],
     },
-    {
-      text: 'Reference',
-      items: sortByText([
-        {
-          text: 'Components',
-          items: getSidebarItems(sourceRoot, 'components', '*'),
-        },
-        {
-          text: 'Hooks',
-          items: getSidebarItems(sourceRoot, 'hooks', '*'),
-        },
-        {
-          text: 'Utils',
-          items: getSidebarItems(sourceRoot, 'utils', '*'),
-        },
-      ]),
-    },
+    { text: 'Components', collapsed: false, items: getItems('core/components') },
+    { text: 'Hooks', collapsed: false, items: getItems('core/hooks') },
+    { text: 'Utils', collapsed: false, items: getItems('core/utils') },
   ];
+}
+
+function mobileSidebar(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: 'Guide',
+      items: [
+        { text: 'Introduction', link: '/mobile/intro' },
+      ],
+    },
+    { text: 'Hooks', collapsed: false, items: getItems('mobile/hooks') },
+  ];
+}
+
+function getItems(subPath: string): DefaultTheme.SidebarItem[] {
+  const files = glob.sync(path.join(docsRoot, subPath, '*.md'));
+  return files.map(file => {
+    const name = path.basename(file, '.md');
+    return { text: name, link: `/${subPath}/${name}` };
+  }).sort((a, b) => a.text.localeCompare(b.text));
 }
