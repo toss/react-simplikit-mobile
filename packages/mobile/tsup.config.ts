@@ -7,6 +7,7 @@ export default defineConfig({
   clean: true,
   sourcemap: true,
   splitting: false,
+  external: ['react', 'react-dom'],
   // To support React Server Components
   banner: {
     js: '"use client";',
