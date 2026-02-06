@@ -23,5 +23,5 @@ export { subscribeKeyboardHeight } from './utils/keyboard/subscribeKeyboardHeigh
 export { getSafeAreaInset } from './utils/safeArea/getSafeAreaInset.ts';
 
 // Components
-export { KeyboardAvoidanceProvider, useKeyboardMetrics } from './components/keyboardAvoidanceProvider.ts';
+export { KeyboardAvoidanceProvider, useKeyboardMetrics } from './components/keyboardAvoidanceProvider.tsx';
 export { KeyboardComposer } from './components/KeyboardComposer.tsx';

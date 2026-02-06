@@ -9,6 +9,7 @@ import {
   OVERLAY_ROOT_ID,
 } from '../constants/keyboard.ts';
 import { KeyboardMetrics } from '../types/KeyboardMetrics.ts';
+import { disableBodyScrollLock, enableBodyScrollLock } from '../utils/bodyScrollLock.ts';
 import { createExternalStore } from '../utils/createExternalStore.ts';
 import { isIOS } from '../utils/device/device.ts';
 import { isServer } from '../utils/isServer.ts';
@@ -192,96 +193,19 @@ function installIOSComposerFocusFix(openThresholdPx: number) {
     return se.scrollHeight - se.clientHeight > 1;
   };
 
-  // ---- freeze html+body (maintained during focus) ----
-  type FreezeState = {
-    position: string;
-    top: string;
-    left: string;
-    right: string;
-    width: string;
-    overflow: string;
-    height: string;
-  };
-
+  // ---- freeze body scroll (maintained during focus) ----
   let frozen = false;
-  let frozenScrollY = 0;
-  let prevHtml: FreezeState | null = null;
-  let prevBody: FreezeState | null = null;
 
   const freezeRoot = () => {
     if (frozen) return;
-
-    frozenScrollY = window.scrollY || 0;
-
-    const html = document.documentElement;
-    const body = document.body;
-
-    prevHtml = {
-      position: html.style.position,
-      top: html.style.top,
-      left: html.style.left,
-      right: html.style.right,
-      width: html.style.width,
-      overflow: html.style.overflow,
-      height: html.style.height,
-    };
-    prevBody = {
-      position: body.style.position,
-      top: body.style.top,
-      left: body.style.left,
-      right: body.style.right,
-      width: body.style.width,
-      overflow: body.style.overflow,
-      height: body.style.height,
-    };
-
-    // Freeze both html+body (stronger viewport pan suppression on non-scrollable pages)
-    html.style.position = 'fixed';
-    html.style.top = `-${frozenScrollY}px`;
-    html.style.left = '0';
-    html.style.right = '0';
-    html.style.width = '100%';
-    html.style.height = '100%';
-    html.style.overflow = 'hidden';
-
-    body.style.position = 'fixed';
-    body.style.top = `-${frozenScrollY}px`;
-    body.style.left = '0';
-    body.style.right = '0';
-    body.style.width = '100%';
-    body.style.height = '100%';
-    body.style.overflow = 'hidden';
-
+    enableBodyScrollLock();
     frozen = true;
   };
 
   const unfreezeRoot = () => {
-    if (!frozen || !prevHtml || !prevBody) return;
-
-    const html = document.documentElement;
-    const body = document.body;
-
-    html.style.position = prevHtml.position;
-    html.style.top = prevHtml.top;
-    html.style.left = prevHtml.left;
-    html.style.right = prevHtml.right;
-    html.style.width = prevHtml.width;
-    html.style.height = prevHtml.height;
-    html.style.overflow = prevHtml.overflow;
-
-    body.style.position = prevBody.position;
-    body.style.top = prevBody.top;
-    body.style.left = prevBody.left;
-    body.style.right = prevBody.right;
-    body.style.width = prevBody.width;
-    body.style.height = prevBody.height;
-    body.style.overflow = prevBody.overflow;
-
-    window.scrollTo(0, frozenScrollY);
-
+    if (!frozen) return;
+    disableBodyScrollLock();
     frozen = false;
-    prevHtml = null;
-    prevBody = null;
   };
 
   // ---- scrollY guard until keyboard open (secondary guard) ----
