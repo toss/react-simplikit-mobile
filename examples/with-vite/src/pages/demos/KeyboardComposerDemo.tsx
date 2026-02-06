@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Card, CodeBlock, InfoBox, StatusCard, StatusRow } from '@examples/shared';
-import { KeyboardComposer, useKeyboardMetrics, useSafeAreaInset } from '@react-simplikit/mobile';
+import { KeyboardComposer, useKeyboardMetrics } from '@react-simplikit/mobile';
 
 import { DemoLayout } from '../../components/DemoLayout.tsx';
 
@@ -48,7 +48,6 @@ function MyComponent() {
 function DemoContent() {
   const [chatMessage, setChatMessage] = useState('');
   const { kbh, vvh, vvt, isOpen } = useKeyboardMetrics();
-  const safeAreaInset = useSafeAreaInset();
 
   return (
     <>
@@ -69,7 +68,6 @@ function DemoContent() {
             monospace
           />
           <StatusRow label="Keyboard Open" value={isOpen ? 'Yes' : 'No'} variant={isOpen ? 'success' : 'default'} />
-          <StatusRow label="Safe Area Bottom" value={`${safeAreaInset.bottom}px`} monospace />
         </StatusCard>
 
         {/* How it works */}
