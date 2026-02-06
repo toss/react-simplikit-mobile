@@ -21,6 +21,11 @@ export function Home() {
         </h2>
         <nav>
           <DemoLink
+            to="/demos/keyboard-composer"
+            title="KeyboardComposer"
+            description="CSS variable-based keyboard avoidance with iOS jump prevention"
+          />
+          <DemoLink
             to="/demos/use-body-scroll-lock"
             title="useBodyScrollLock"
             description="Prevent body scroll with nested modals"
