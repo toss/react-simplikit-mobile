@@ -8,18 +8,18 @@
 
 ### 매개변수
 
-| 이름 | 타입 | 기본값 | 설명 |
-|------|------|--------|------|
-| options.throttleMs | `number` | `50` | 스크롤 이벤트 처리 빈도를 제한하는 쓰로틀 간격 (밀리초) |
+| 이름               | 타입     | 기본값 | 설명                                                    |
+| ------------------ | -------- | ------ | ------------------------------------------------------- |
+| options.throttleMs | `number` | `50`   | 스크롤 이벤트 처리 빈도를 제한하는 쓰로틀 간격 (밀리초) |
 
 ### 반환값
 
 `ScrollDirectionState` 객체를 반환해요:
 
-| 속성 | 타입 | 설명 |
-|------|------|------|
+| 속성      | 타입                     | 설명                                        |
+| --------- | ------------------------ | ------------------------------------------- |
 | direction | `'up' \| 'down' \| null` | 현재 스크롤 방향. 초기 렌더링 시에는 `null` |
-| position | `number` | 현재 세로 스크롤 위치 (픽셀 단위) |
+| position  | `number`                 | 현재 세로 스크롤 위치 (픽셀 단위)           |
 
 ## 예제
 
@@ -30,11 +30,7 @@ function Header() {
   // Hide header on scroll down
   const isHidden = direction === 'down' && position > 100;
 
-  return (
-    <header className={isHidden ? 'hidden' : 'visible'}>
-      My Header
-    </header>
-  );
+  return <header className={isHidden ? 'hidden' : 'visible'}>My Header</header>;
 }
 ```
 
@@ -45,7 +41,11 @@ function MyComponent() {
   // Update every 100ms instead of default 50ms
   const { direction, position } = useScrollDirection({ throttleMs: 100 });
 
-  return <div>Scrolling {direction}! Position: {position}px</div>;
+  return (
+    <div>
+      Scrolling {direction}! Position: {position}px
+    </div>
+  );
 }
 ```
 

@@ -12,13 +12,13 @@ Network Information API에 접근하는 React 훅이에요. 연결 타입, 품�
 
 다음 속성을 가진 `NetworkStatus` 객체를 반환해요:
 
-| 속성 | 타입 | 설명 |
-|------|------|------|
-| `effectiveType` | `'slow-2g' \| '2g' \| '3g' \| '4g' \| undefined` | 연결 품질 지표 - API가 지원되지 않으면 undefined |
-| `type` | `'bluetooth' \| 'cellular' \| 'ethernet' \| 'mixed' \| 'none' \| 'other' \| 'unknown' \| 'wifi' \| 'wimax' \| undefined` | 물리적 연결 타입 - API가 지원되지 않으면 undefined |
-| `downlink` | `number \| undefined` | Mbps 단위의 다운링크 속도 - API가 지원되지 않으면 undefined |
-| `rtt` | `number \| undefined` | 밀리초 단위의 왕복 시간 - API가 지원되지 않으면 undefined |
-| `saveData` | `boolean \| undefined` | 사용자의 데이터 절약 모드 설정 - API가 지원되지 않으면 undefined |
+| 속성            | 타입                                                                                                                     | 설명                                                             |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- |
+| `effectiveType` | `'slow-2g' \| '2g' \| '3g' \| '4g' \| undefined`                                                                         | 연결 품질 지표 - API가 지원되지 않으면 undefined                 |
+| `type`          | `'bluetooth' \| 'cellular' \| 'ethernet' \| 'mixed' \| 'none' \| 'other' \| 'unknown' \| 'wifi' \| 'wimax' \| undefined` | 물리적 연결 타입 - API가 지원되지 않으면 undefined               |
+| `downlink`      | `number \| undefined`                                                                                                    | Mbps 단위의 다운링크 속도 - API가 지원되지 않으면 undefined      |
+| `rtt`           | `number \| undefined`                                                                                                    | 밀리초 단위의 왕복 시간 - API가 지원되지 않으면 undefined        |
+| `saveData`      | `boolean \| undefined`                                                                                                   | 사용자의 데이터 절약 모드 설정 - API가 지원되지 않으면 undefined |
 
 ## 예제
 
@@ -32,10 +32,7 @@ function AdaptiveImage() {
   const useHighQuality = effectiveType === '4g' && !saveData;
 
   return (
-    <img
-      src={useHighQuality ? 'high-res.jpg' : 'low-res.jpg'}
-      alt="Content"
-    />
+    <img src={useHighQuality ? 'high-res.jpg' : 'low-res.jpg'} alt="Content" />
   );
 }
 ```

@@ -8,18 +8,18 @@ Returns scroll direction (up/down) and current scroll position. Throttled by def
 
 ### Parameters
 
-| Name | Type | Default | Description |
-|------|------|---------|-------------|
-| options.throttleMs | `number` | `50` | Throttle interval in milliseconds to limit scroll event handling frequency |
+| Name               | Type     | Default | Description                                                                |
+| ------------------ | -------- | ------- | -------------------------------------------------------------------------- |
+| options.throttleMs | `number` | `50`    | Throttle interval in milliseconds to limit scroll event handling frequency |
 
 ### Return Value
 
 Returns `ScrollDirectionState` object:
 
-| Property | Type | Description |
-|----------|------|-------------|
+| Property  | Type                     | Description                                        |
+| --------- | ------------------------ | -------------------------------------------------- |
 | direction | `'up' \| 'down' \| null` | Current scroll direction. `null` on initial render |
-| position | `number` | Current vertical scroll position in pixels |
+| position  | `number`                 | Current vertical scroll position in pixels         |
 
 ## Example
 
@@ -30,11 +30,7 @@ function Header() {
   // Hide header on scroll down
   const isHidden = direction === 'down' && position > 100;
 
-  return (
-    <header className={isHidden ? 'hidden' : 'visible'}>
-      My Header
-    </header>
-  );
+  return <header className={isHidden ? 'hidden' : 'visible'}>My Header</header>;
 }
 ```
 
@@ -45,7 +41,11 @@ function MyComponent() {
   // Update every 100ms instead of default 50ms
   const { direction, position } = useScrollDirection({ throttleMs: 100 });
 
-  return <div>Scrolling {direction}! Position: {position}px</div>;
+  return (
+    <div>
+      Scrolling {direction}! Position: {position}px
+    </div>
+  );
 }
 ```
 

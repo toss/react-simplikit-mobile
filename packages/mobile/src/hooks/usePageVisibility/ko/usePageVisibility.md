@@ -14,10 +14,10 @@ Page Visibility API를 사용하여 사용자가 탭을 전환하거나 브라�
 
 다음 속성을 가진 `PageVisibility` 객체를 반환해요:
 
-| 속성 | 타입 | 설명 |
-|------|------|------|
-| `isVisible` | `boolean` | 페이지가 현재 사용자에게 보이면 `true` |
-| `visibilityState` | `'visible' \| 'hidden'` | 페이지의 현재 가시성 상태 |
+| 속성              | 타입                    | 설명                                   |
+| ----------------- | ----------------------- | -------------------------------------- |
+| `isVisible`       | `boolean`               | 페이지가 현재 사용자에게 보이면 `true` |
+| `visibilityState` | `'visible' \| 'hidden'` | 페이지의 현재 가시성 상태              |
 
 ## 예제
 

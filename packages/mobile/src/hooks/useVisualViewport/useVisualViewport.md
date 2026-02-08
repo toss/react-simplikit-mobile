@@ -14,19 +14,19 @@ This hook takes no parameters.
 
 Returns an object with the following property:
 
-| Property | Type | Description |
-|----------|------|-------------|
+| Property   | Type                          | Description                                                                                           |
+| ---------- | ----------------------------- | ----------------------------------------------------------------------------------------------------- |
 | `viewport` | `VisualViewportState \| null` | Visual Viewport state object, or `null` if not supported (SSR or browser without Visual Viewport API) |
 
 #### VisualViewportState Properties
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `width` | `number` | Viewport width in pixels |
-| `height` | `number` | Viewport height in pixels |
-| `offsetLeft` | `number` | Viewport left offset (px) from the layout viewport. Typically 0 unless horizontal scrolling or panning occurs |
-| `offsetTop` | `number` | Viewport top offset (px) from the layout viewport. On iOS: Becomes negative when keyboard appears (e.g., -300px means 300px keyboard height). On Android: Typically remains 0. Use `-offsetTop` to get accurate keyboard height on iOS |
-| `scale` | `number` | Pinch-zoom scaling factor. 1.0 = no zoom (default), > 1.0 = zoomed in, < 1.0 = zoomed out (rare, depends on viewport settings) |
+| Property     | Type     | Description                                                                                                                                                                                                                            |
+| ------------ | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `width`      | `number` | Viewport width in pixels                                                                                                                                                                                                               |
+| `height`     | `number` | Viewport height in pixels                                                                                                                                                                                                              |
+| `offsetLeft` | `number` | Viewport left offset (px) from the layout viewport. Typically 0 unless horizontal scrolling or panning occurs                                                                                                                          |
+| `offsetTop`  | `number` | Viewport top offset (px) from the layout viewport. On iOS: Becomes negative when keyboard appears (e.g., -300px means 300px keyboard height). On Android: Typically remains 0. Use `-offsetTop` to get accurate keyboard height on iOS |
+| `scale`      | `number` | Pinch-zoom scaling factor. 1.0 = no zoom (default), > 1.0 = zoomed in, < 1.0 = zoomed out (rare, depends on viewport settings)                                                                                                         |
 
 ## Example
 

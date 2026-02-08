@@ -14,10 +14,10 @@ This hook takes no parameters.
 
 Returns a `PageVisibility` object with the following properties:
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `isVisible` | `boolean` | `true` if the page is currently visible to the user |
-| `visibilityState` | `'visible' \| 'hidden'` | Current visibility state of the page |
+| Property          | Type                    | Description                                         |
+| ----------------- | ----------------------- | --------------------------------------------------- |
+| `isVisible`       | `boolean`               | `true` if the page is currently visible to the user |
+| `visibilityState` | `'visible' \| 'hidden'` | Current visibility state of the page                |
 
 ## Examples
 

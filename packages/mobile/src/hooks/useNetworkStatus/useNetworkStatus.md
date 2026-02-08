@@ -12,13 +12,13 @@ This hook takes no parameters.
 
 Returns `NetworkStatus` object with the following properties:
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `effectiveType` | `'slow-2g' \| '2g' \| '3g' \| '4g' \| undefined` | Connection quality indicator - undefined if API not supported |
-| `type` | `'bluetooth' \| 'cellular' \| 'ethernet' \| 'mixed' \| 'none' \| 'other' \| 'unknown' \| 'wifi' \| 'wimax' \| undefined` | Physical connection type - undefined if API not supported |
-| `downlink` | `number \| undefined` | Downlink speed in Mbps - undefined if API not supported |
-| `rtt` | `number \| undefined` | Round-trip time in milliseconds - undefined if API not supported |
-| `saveData` | `boolean \| undefined` | User's data saver preference - undefined if API not supported |
+| Property        | Type                                                                                                                     | Description                                                      |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- |
+| `effectiveType` | `'slow-2g' \| '2g' \| '3g' \| '4g' \| undefined`                                                                         | Connection quality indicator - undefined if API not supported    |
+| `type`          | `'bluetooth' \| 'cellular' \| 'ethernet' \| 'mixed' \| 'none' \| 'other' \| 'unknown' \| 'wifi' \| 'wimax' \| undefined` | Physical connection type - undefined if API not supported        |
+| `downlink`      | `number \| undefined`                                                                                                    | Downlink speed in Mbps - undefined if API not supported          |
+| `rtt`           | `number \| undefined`                                                                                                    | Round-trip time in milliseconds - undefined if API not supported |
+| `saveData`      | `boolean \| undefined`                                                                                                   | User's data saver preference - undefined if API not supported    |
 
 ## Examples
 
@@ -32,10 +32,7 @@ function AdaptiveImage() {
   const useHighQuality = effectiveType === '4g' && !saveData;
 
   return (
-    <img
-      src={useHighQuality ? 'high-res.jpg' : 'low-res.jpg'}
-      alt="Content"
-    />
+    <img src={useHighQuality ? 'high-res.jpg' : 'low-res.jpg'} alt="Content" />
   );
 }
 ```
