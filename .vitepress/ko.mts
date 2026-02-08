@@ -76,6 +76,8 @@ function mobileSidebar(): DefaultTheme.SidebarItem[] {
       items: [
         { text: '소개', link: '/ko/mobile/intro' },
         { text: '설치하기', link: '/ko/mobile/installation' },
+        { text: '설계 원칙', link: '/ko/mobile/design-principles' },
+        { text: '기여하기', link: '/ko/mobile/contributing' },
       ],
     },
     {
