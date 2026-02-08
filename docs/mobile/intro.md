@@ -74,7 +74,7 @@ function ChatInput() {
       <input
         type="text"
         value={message}
-        onChange={(e) => setMessage(e.target.value)}
+        onChange={e => setMessage(e.target.value)}
         placeholder="Type a message..."
         style={{ flex: 1 }}
       />
@@ -112,12 +112,12 @@ function FixedBottomCTA() {
 
 ## Available Hooks
 
-| Hook | Description |
-|------|-------------|
-| [useAvoidKeyboard](/mobile/hooks/useAvoidKeyboard) | Moves fixed elements above the on-screen keyboard |
-| [useKeyboardHeight](/mobile/hooks/useKeyboardHeight) | Returns the current keyboard height |
-| [useBodyScrollLock](/mobile/hooks/useBodyScrollLock) | Locks body scroll for modals and overlays |
-| [useScrollDirection](/mobile/hooks/useScrollDirection) | Detects scroll direction (up/down) |
-| [useNetworkStatus](/mobile/hooks/useNetworkStatus) | Monitors network connection status |
-| [usePageVisibility](/mobile/hooks/usePageVisibility) | Tracks page visibility state |
-| [useVisualViewport](/mobile/hooks/useVisualViewport) | Provides visual viewport dimensions and offset |
+| Hook                                                   | Description                                       |
+| ------------------------------------------------------ | ------------------------------------------------- |
+| [useAvoidKeyboard](/mobile/hooks/useAvoidKeyboard)     | Moves fixed elements above the on-screen keyboard |
+| [useKeyboardHeight](/mobile/hooks/useKeyboardHeight)   | Returns the current keyboard height               |
+| [useBodyScrollLock](/mobile/hooks/useBodyScrollLock)   | Locks body scroll for modals and overlays         |
+| [useScrollDirection](/mobile/hooks/useScrollDirection) | Detects scroll direction (up/down)                |
+| [useNetworkStatus](/mobile/hooks/useNetworkStatus)     | Monitors network connection status                |
+| [usePageVisibility](/mobile/hooks/usePageVisibility)   | Tracks page visibility state                      |
+| [useVisualViewport](/mobile/hooks/useVisualViewport)   | Provides visual viewport dimensions and offset    |
