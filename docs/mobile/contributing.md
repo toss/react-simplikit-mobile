@@ -103,7 +103,7 @@ Consider these platform differences when implementing:
 | Feature                    | iOS                                    | Android             |
 | -------------------------- | -------------------------------------- | ------------------- |
 | `visualViewport.offsetTop` | Becomes negative when keyboard appears | Typically remains 0 |
-| Keyboard behavior          | Overlays the viewport                  | Resizes the layout  |
+| Keyboard behavior          | Viewport is pushed up                  | Resizes the layout  |
 
 ### window/document Access Pattern
 
