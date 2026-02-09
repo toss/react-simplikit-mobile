@@ -287,15 +287,43 @@ When your code changes affect the package, you need to create a changeset. Chang
 yarn changeset
 ```
 
-2. Select the type of change:
+2. Select the type of change (for 0.x packages):
 
-   - `patch`: Bug fixes or minor changes
-   - `minor`: New features (maintaining backward compatibility)
-   - `major`: Breaking changes (breaking backward compatibility)
+   - `patch`: Bug fixes or new features (backward-compatible)
+   - `minor`: Breaking changes (API modifications)
+   - `major`: Reserved for 1.0.0 stable release (don't use)
+
+   > **Note**: This is different from post-1.0 semver. See [VERSIONING.md](../../VERSIONING.md) for details.
 
 3. Write a brief summary of your changes.
 
 4. Commit the generated changeset file with your PR.
+
+::: warning Breaking Change Changeset
+If your change is a breaking change (`minor` changeset), you **must** include:
+
+1. `⚠️ BREAKING CHANGE:` prefix in the changeset summary
+2. Migration guide with before/after code examples (use diff format)
+3. Rationale for the change
+
+````markdown
+---
+"react-simplikit": minor
+---
+
+⚠️ BREAKING CHANGE: Remove deprecated `usePrevious` hook
+
+**Migration:**
+
+```diff
+- import { usePrevious } from 'react-simplikit';
++ // Use useRef and useEffect instead
+```
+
+**Rationale**: Better handled by React's built-in primitives.
+````
+
+:::
 
 ::: tip
 Changeset files are created in the `.changeset` folder and must be committed with your PR. When the PR is merged, the version will be automatically updated and a changelog will be generated.

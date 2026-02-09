@@ -15,6 +15,8 @@ A collection of lightweight, zero-dependency React utilities for building robust
 
 > **Note**: `react-simplikit` is now maintained as a Universal Hook Library providing only pure state/logic hooks that work across web and mobile (React Native). Browser/platform-dependent hooks are deprecated. See [packages/core/README.md](./packages/core/README.md) for details.
 
+> **0.x Status**: Both packages are pre-1.0. The API is production-ready but may evolve. Breaking changes only occur in minor version bumps (0.x → 0.x+1), and `^0.x.y` in your package.json protects you from unexpected upgrades. See [VERSIONING.md](./VERSIONING.md) for details.
+
 ## Features
 
 - **Zero dependencies** - Extremely lightweight
