@@ -8,7 +8,7 @@ export {
   useNetworkStatus,
 } from './hooks/useNetworkStatus/index.ts';
 export { type PageVisibility, usePageVisibility, type VisibilityState } from './hooks/usePageVisibility/index.ts';
-export { useSafeAreaInset } from './hooks/useSafeAreaInset.ts';
+export { useSafeAreaInset } from './hooks/useSafeAreaInset/index.ts';
 export { useScrollDirection } from './hooks/useScrollDirection/index.ts';
 export { useVisualViewport } from './hooks/useVisualViewport/index.ts';
 
