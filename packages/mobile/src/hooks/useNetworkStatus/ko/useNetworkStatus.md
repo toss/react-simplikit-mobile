@@ -4,21 +4,53 @@ Network Information API에 접근하는 React 훅이에요. 연결 타입, 품�
 
 ## 인터페이스
 
+```ts
+function useNetworkStatus(): NetworkStatus;
+```
+
 ### 파라미터
 
 이 훅은 파라미터를 받지 않아요.
 
 ### 반환값
 
-다음 속성을 가진 `NetworkStatus` 객체를 반환해요:
-
-| 속성            | 타입                                                                                                                     | 설명                                                             |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- |
-| `effectiveType` | `'slow-2g' \| '2g' \| '3g' \| '4g' \| undefined`                                                                         | 연결 품질 지표 - API가 지원되지 않으면 undefined                 |
-| `type`          | `'bluetooth' \| 'cellular' \| 'ethernet' \| 'mixed' \| 'none' \| 'other' \| 'unknown' \| 'wifi' \| 'wimax' \| undefined` | 물리적 연결 타입 - API가 지원되지 않으면 undefined               |
-| `downlink`      | `number \| undefined`                                                                                                    | Mbps 단위의 다운링크 속도 - API가 지원되지 않으면 undefined      |
-| `rtt`           | `number \| undefined`                                                                                                    | 밀리초 단위의 왕복 시간 - API가 지원되지 않으면 undefined        |
-| `saveData`      | `boolean \| undefined`                                                                                                   | 사용자의 데이터 절약 모드 설정 - API가 지원되지 않으면 undefined |
+<Interface
+name=""
+type="NetworkStatus"
+description="네트워크 연결 데이터를 담은 객체예요."
+:nested="[
+{
+name: 'effectiveType',
+type: \"'slow-2g' | '2g' | '3g' | '4g' | undefined\",
+required: false,
+description: '연결 품질 지표 - API가 지원되지 않으면 undefined',
+},
+{
+name: 'type',
+type: \"'bluetooth' | 'cellular' | 'ethernet' | 'mixed' | 'none' | 'other' | 'unknown' | 'wifi' | 'wimax' | undefined\",
+required: false,
+description: '물리적 연결 타입 - API가 지원되지 않으면 undefined',
+},
+{
+name: 'downlink',
+type: 'number | undefined',
+required: false,
+description: 'Mbps 단위의 다운링크 속도 - API가 지원되지 않으면 undefined',
+},
+{
+name: 'rtt',
+type: 'number | undefined',
+required: false,
+description: '밀리초 단위의 왕복 시간 - API가 지원되지 않으면 undefined',
+},
+{
+name: 'saveData',
+type: 'boolean | undefined',
+required: false,
+description: '사용자의 데이터 절약 모드 설정 - API가 지원되지 않으면 undefined',
+},
+]"
+/>
 
 ## 예제
 

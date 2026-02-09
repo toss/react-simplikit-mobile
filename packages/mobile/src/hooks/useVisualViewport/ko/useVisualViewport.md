@@ -6,27 +6,53 @@ Visual Viewport 변경사항을 추적하는 React 훅이에요.
 
 ## 인터페이스
 
+```ts
+function useVisualViewport(): { viewport: VisualViewportState | null };
+```
+
 ### 매개변수
 
 이 훅은 매개변수를 받지 않아요.
 
 ### 반환값
 
-다음 속성을 가진 객체를 반환해요.
-
-| 속성       | 타입                          | 설명                                                                                                     |
-| ---------- | ----------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `viewport` | `VisualViewportState \| null` | Visual Viewport 상태 객체, 지원하지 않는 환경(SSR 또는 Visual Viewport API 미지원 브라우저)에서는 `null` |
-
-#### VisualViewportState 속성
-
-| 속성         | 타입     | 설명                                                                                                                                                                                                                         |
-| ------------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `width`      | `number` | 뷰포트 너비 (픽셀)                                                                                                                                                                                                           |
-| `height`     | `number` | 뷰포트 높이 (픽셀)                                                                                                                                                                                                           |
-| `offsetLeft` | `number` | 레이아웃 뷰포트로부터의 왼쪽 오프셋 (픽셀). 일반적으로 0이며, 가로 스크롤이나 패닝이 발생할 때만 변경돼요                                                                                                                    |
-| `offsetTop`  | `number` | 레이아웃 뷰포트로부터의 상단 오프셋 (픽셀). iOS: 키보드가 나타날 때 음수가 돼요 (예: -300px는 키보드 높이 300px를 의미). Android: 일반적으로 0으로 유지돼요. iOS에서 정확한 키보드 높이를 얻으려면 `-offsetTop`을 사용하세요 |
-| `scale`      | `number` | 핀치 줌 배율. 1.0 = 줌 없음(기본값), > 1.0 = 확대, < 1.0 = 축소(드물며, 뷰포트 설정에 따라 다름)                                                                                                                             |
+<Interface
+  name="viewport"
+  type="VisualViewportState | null"
+  description="Visual Viewport 상태 객체, 지원하지 않는 환경(SSR 또는 Visual Viewport API 미지원 브라우저)에서는 <code>null</code>이에요."
+  :nested="[
+    {
+      name: 'viewport.width',
+      type: 'number',
+      required: false,
+      description: '뷰포트 너비 (픽셀)',
+    },
+    {
+      name: 'viewport.height',
+      type: 'number',
+      required: false,
+      description: '뷰포트 높이 (픽셀)',
+    },
+    {
+      name: 'viewport.offsetLeft',
+      type: 'number',
+      required: false,
+      description: '레이아웃 뷰포트로부터의 왼쪽 오프셋 (픽셀). 일반적으로 0이며, 가로 스크롤이나 패닝이 발생할 때만 변경돼요',
+    },
+    {
+      name: 'viewport.offsetTop',
+      type: 'number',
+      required: false,
+      description: '레이아웃 뷰포트로부터의 상단 오프셋 (픽셀). iOS: 키보드가 나타날 때 음수가 돼요 (예: -300px는 키보드 높이 300px를 의미). Android: 일반적으로 0으로 유지돼요. iOS에서 정확한 키보드 높이를 얻으려면 <code>-offsetTop</code>을 사용하세요',
+    },
+    {
+      name: 'viewport.scale',
+      type: 'number',
+      required: false,
+      description: '핀치 줌 배율. 1.0 = 줌 없음(기본값), > 1.0 = 확대, < 1.0 = 축소(드물며, 뷰포트 설정에 따라 다름)',
+    },
+  ]"
+/>
 
 ## 예제
 

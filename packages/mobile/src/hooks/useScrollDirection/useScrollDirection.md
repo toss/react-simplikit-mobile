@@ -6,20 +6,50 @@ Returns scroll direction (up/down) and current scroll position. Throttled by def
 
 ## Interface
 
+```ts
+function useScrollDirection(
+  options?: UseScrollDirectionOptions
+): ScrollDirectionState;
+```
+
 ### Parameters
 
-| Name               | Type     | Default | Description                                                                |
-| ------------------ | -------- | ------- | -------------------------------------------------------------------------- |
-| options.throttleMs | `number` | `50`    | Throttle interval in milliseconds to limit scroll event handling frequency |
+<Interface
+  name="options"
+  type="UseScrollDirectionOptions"
+  description="Configuration options for scroll direction detection."
+  :nested="[
+    {
+      name: 'options.throttleMs',
+      type: 'number',
+      required: false,
+      defaultValue: '50',
+      description: 'Throttle interval in milliseconds to limit scroll event handling frequency',
+    },
+  ]"
+/>
 
 ### Return Value
 
-Returns `ScrollDirectionState` object:
-
-| Property  | Type                     | Description                                        |
-| --------- | ------------------------ | -------------------------------------------------- |
-| direction | `'up' \| 'down' \| null` | Current scroll direction. `null` on initial render |
-| position  | `number`                 | Current vertical scroll position in pixels         |
+<Interface
+name=""
+type="ScrollDirectionState"
+description="object with scroll direction and position."
+:nested="[
+{
+name: 'direction',
+type: \"'up' | 'down' | null\",
+required: false,
+description: 'Current scroll direction. <code>null</code> on initial render',
+},
+{
+name: 'position',
+type: 'number',
+required: false,
+description: 'Current vertical scroll position in pixels',
+},
+]"
+/>
 
 ## Example
 

@@ -4,6 +4,10 @@
 
 ## 인터페이스
 
+```ts
+function useBodyScrollLock(): void;
+```
+
 ### 매개변수
 
 이 훅은 매개변수를 받지 않아요.

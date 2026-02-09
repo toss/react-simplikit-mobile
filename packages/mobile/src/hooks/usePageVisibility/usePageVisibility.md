@@ -6,18 +6,35 @@ Monitors when the user switches tabs or minimizes the browser using the Page Vis
 
 ## Interface
 
+```ts
+function usePageVisibility(): PageVisibility;
+```
+
 ### Parameters
 
 This hook takes no parameters.
 
 ### Return Value
 
-Returns a `PageVisibility` object with the following properties:
-
-| Property          | Type                    | Description                                         |
-| ----------------- | ----------------------- | --------------------------------------------------- |
-| `isVisible`       | `boolean`               | `true` if the page is currently visible to the user |
-| `visibilityState` | `'visible' \| 'hidden'` | Current visibility state of the page                |
+<Interface
+name=""
+type="PageVisibility"
+description="object with page visibility state."
+:nested="[
+{
+name: 'isVisible',
+type: 'boolean',
+required: false,
+description: '<code>true</code> if the page is currently visible to the user',
+},
+{
+name: 'visibilityState',
+type: \"'visible' | 'hidden'\",
+required: false,
+description: 'Current visibility state of the page',
+},
+]"
+/>
 
 ## Examples
 

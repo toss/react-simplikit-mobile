@@ -4,6 +4,10 @@ A React hook that locks body scroll when mounted and automatically unlocks when 
 
 ## Interface
 
+```ts
+function useBodyScrollLock(): void;
+```
+
 ### Parameters
 
 This hook takes no parameters.

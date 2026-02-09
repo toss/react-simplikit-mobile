@@ -6,18 +6,35 @@ Page Visibility API를 사용하여 사용자가 탭을 전환하거나 브라�
 
 ## 인터페이스
 
+```ts
+function usePageVisibility(): PageVisibility;
+```
+
 ### 매개변수
 
 이 훅은 매개변수를 받지 않아요.
 
 ### 반환값
 
-다음 속성을 가진 `PageVisibility` 객체를 반환해요:
-
-| 속성              | 타입                    | 설명                                   |
-| ----------------- | ----------------------- | -------------------------------------- |
-| `isVisible`       | `boolean`               | 페이지가 현재 사용자에게 보이면 `true` |
-| `visibilityState` | `'visible' \| 'hidden'` | 페이지의 현재 가시성 상태              |
+<Interface
+name=""
+type="PageVisibility"
+description="페이지 가시성 상태를 담은 객체예요."
+:nested="[
+{
+name: 'isVisible',
+type: 'boolean',
+required: false,
+description: '페이지가 현재 사용자에게 보이면 <code>true</code>',
+},
+{
+name: 'visibilityState',
+type: \"'visible' | 'hidden'\",
+required: false,
+description: '페이지의 현재 가시성 상태',
+},
+]"
+/>
 
 ## 예제
 

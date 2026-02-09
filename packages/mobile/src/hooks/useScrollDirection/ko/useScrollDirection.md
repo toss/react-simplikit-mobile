@@ -6,20 +6,50 @@
 
 ## 인터페이스
 
+```ts
+function useScrollDirection(
+  options?: UseScrollDirectionOptions
+): ScrollDirectionState;
+```
+
 ### 매개변수
 
-| 이름               | 타입     | 기본값 | 설명                                                    |
-| ------------------ | -------- | ------ | ------------------------------------------------------- |
-| options.throttleMs | `number` | `50`   | 스크롤 이벤트 처리 빈도를 제한하는 쓰로틀 간격 (밀리초) |
+<Interface
+  name="options"
+  type="UseScrollDirectionOptions"
+  description="스크롤 방향 감지를 위한 설정 옵션이에요."
+  :nested="[
+    {
+      name: 'options.throttleMs',
+      type: 'number',
+      required: false,
+      defaultValue: '50',
+      description: '스크롤 이벤트 처리 빈도를 제한하는 쓰로틀 간격 (밀리초)',
+    },
+  ]"
+/>
 
 ### 반환값
 
-`ScrollDirectionState` 객체를 반환해요:
-
-| 속성      | 타입                     | 설명                                        |
-| --------- | ------------------------ | ------------------------------------------- |
-| direction | `'up' \| 'down' \| null` | 현재 스크롤 방향. 초기 렌더링 시에는 `null` |
-| position  | `number`                 | 현재 세로 스크롤 위치 (픽셀 단위)           |
+<Interface
+name=""
+type="ScrollDirectionState"
+description="스크롤 방향과 위치를 담은 객체예요."
+:nested="[
+{
+name: 'direction',
+type: \"'up' | 'down' | null\",
+required: false,
+description: '현재 스크롤 방향. 초기 렌더링 시에는 <code>null</code>',
+},
+{
+name: 'position',
+type: 'number',
+required: false,
+description: '현재 세로 스크롤 위치 (픽셀 단위)',
+},
+]"
+/>
 
 ## 예제
 

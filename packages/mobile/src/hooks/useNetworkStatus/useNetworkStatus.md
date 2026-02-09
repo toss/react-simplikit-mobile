@@ -4,21 +4,53 @@ React hook to access Network Information API. Provides raw network connection da
 
 ## Interface
 
+```ts
+function useNetworkStatus(): NetworkStatus;
+```
+
 ### Parameters
 
 This hook takes no parameters.
 
 ### Return Value
 
-Returns `NetworkStatus` object with the following properties:
-
-| Property        | Type                                                                                                                     | Description                                                      |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- |
-| `effectiveType` | `'slow-2g' \| '2g' \| '3g' \| '4g' \| undefined`                                                                         | Connection quality indicator - undefined if API not supported    |
-| `type`          | `'bluetooth' \| 'cellular' \| 'ethernet' \| 'mixed' \| 'none' \| 'other' \| 'unknown' \| 'wifi' \| 'wimax' \| undefined` | Physical connection type - undefined if API not supported        |
-| `downlink`      | `number \| undefined`                                                                                                    | Downlink speed in Mbps - undefined if API not supported          |
-| `rtt`           | `number \| undefined`                                                                                                    | Round-trip time in milliseconds - undefined if API not supported |
-| `saveData`      | `boolean \| undefined`                                                                                                   | User's data saver preference - undefined if API not supported    |
+<Interface
+name=""
+type="NetworkStatus"
+description="object with network connection data."
+:nested="[
+{
+name: 'effectiveType',
+type: \"'slow-2g' | '2g' | '3g' | '4g' | undefined\",
+required: false,
+description: 'Connection quality indicator - undefined if API not supported',
+},
+{
+name: 'type',
+type: \"'bluetooth' | 'cellular' | 'ethernet' | 'mixed' | 'none' | 'other' | 'unknown' | 'wifi' | 'wimax' | undefined\",
+required: false,
+description: 'Physical connection type - undefined if API not supported',
+},
+{
+name: 'downlink',
+type: 'number | undefined',
+required: false,
+description: 'Downlink speed in Mbps - undefined if API not supported',
+},
+{
+name: 'rtt',
+type: 'number | undefined',
+required: false,
+description: 'Round-trip time in milliseconds - undefined if API not supported',
+},
+{
+name: 'saveData',
+type: 'boolean | undefined',
+required: false,
+description: \"User's data saver preference - undefined if API not supported\",
+},
+]"
+/>
 
 ## Examples
 
